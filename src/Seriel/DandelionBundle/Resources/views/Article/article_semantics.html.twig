@@ -1,0 +1,87 @@
+<div class="dandelion_semantics_container">
+    <div>
+        <div class="can_copy">
+            <div class="title_semantic" >Titre</div>
+            {{ titleWithEntities |raw }}
+            <div class="title_semantic" >Chapeau</div>
+            {{ chapeauWithEntities |raw }}
+            <div class="title_semantic" >Contenu</div>
+            {{ contentWithEntities |raw }}
+        </div>
+        <div class="block compteur">
+            <span class="EntitySemanticPerson">{{ compteur['Person'] }} persons</span>
+            <span class="EntitySemanticWork">{{ compteur['Work'] }} works</span>
+            <span class="EntitySemanticOrganisation">{{ compteur['Organisation'] }} organisations</span>
+            <span class="EntitySemanticPlace">{{ compteur['Place'] }} place</span>
+            <span class="EntitySemanticEvent">{{ compteur['Event'] }} events</span>
+            <span class="EntitySemanticConcept">{{ compteur['Concept'] }} concept</span>
+        </div>
+    </div>
+<br/>
+<div class="title_semantic" >Titre :</div><br/>
+<table class="designed2 title">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Position</th>
+      <th>Label</th>
+      <th>Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for entitiesLinks in semantics.entitiesTitle %}
+    <tr>
+      <th>{{ entitiesLinks.spot }}</th>
+      <td>{{ entitiesLinks.start }}</td>
+      <td>{{ entitiesLinks.entity.label }}</td>
+      <td>{{ entitiesLinks.confidence }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br/><br/>
+<div class="title_semantic" >Chapeau :</div><br/>
+<table class="designed2 chapeau">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Position</th>
+      <th>Label</th>
+      <th>Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for entitiesLinks in semantics.entitiesChapeau %}
+    <tr>
+      <th>{{ entitiesLinks.spot }}</th>
+      <td>{{ entitiesLinks.start }}</td>
+      <td>{{ entitiesLinks.entity.label }}</td>
+      <td>{{ entitiesLinks.confidence }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br/><br/>
+<div class="title_semantic" >Contenu :</div><br/>
+<table class="designed2 content">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Position</th>
+      <th>Label</th>
+      <th>Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for entitiesLinks in semantics.entitiesContent %}
+    <tr>
+      <th>{{ entitiesLinks.spot }}</th>
+      <td>{{ entitiesLinks.start }}</td>
+      <td>{{ entitiesLinks.entity.label }}</td>
+      <td>{{ entitiesLinks.confidence }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>

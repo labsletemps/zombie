@@ -1,0 +1,7 @@
+parameters:
+    zombie.modules.relatedword:
+        service: seriel_related_word.manager
+        search_semantique: seriel_related_word.manager
+        StateSemantique: seriel_related_word.manager
+    zombie.modules.relatedword_dandelion:
+        search_semantique: seriel_related_word.dandelion_manager

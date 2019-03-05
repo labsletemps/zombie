@@ -1,0 +1,10 @@
+
+parameters:
+    zombie.modules.googleanalytics:
+        service: seriel_google_analytics.manager
+        metrics_object_class: Seriel\GoogleAnalyticsBundle\Entity\GoogleAnalyticsArticleMetrics
+        StateMetrics: seriel_google_analytics.manager    
+    zombie.moduleswidget.googleanalyticsdayreport:
+        service_list: seriel_google_analytics.day_report_manager
+    zombie.moduleswidget.dayreportentrance:
+        service_list: seriel_google_analytics.day_report_entrance_manager

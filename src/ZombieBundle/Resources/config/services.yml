@@ -1,0 +1,118 @@
+services:
+
+    seriel.twig.zombie_extension:
+        class: ZombieBundle\Twig\ZombieExtension
+        arguments:  ["@request_stack","@service_container"]
+        tags:
+            - { name: twig.extension }
+
+    security.access.main_voter:
+        class:      ZombieBundle\Security\Voters\MainAccessVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+
+    security.access.article_voter:
+        class:      ZombieBundle\Security\Voters\ArticleVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+           
+    security.access.reportingSauvegarde_voter:
+        class:      ZombieBundle\Security\Voters\ReportingSauvegardeVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+
+    security.access.rechercheSauvegarde_voter:
+        class:      ZombieBundle\Security\Voters\RechercheSauvegardeVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+
+    security.access.zombieProfil_voter:
+        class:      ZombieBundle\Security\Voters\ZombieProfilVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+
+    managers_manager:
+        class: ZombieBundle\Managers\ZombieManagersManager
+        arguments: ["@doctrine", "@templating", "@logger", "@service_container"]
+
+    parameters_manager:
+        class: ZombieBundle\Managers\Params\ParametersManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    articles_manager:
+        class: ZombieBundle\Managers\News\ArticlesManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    individus_manager:
+        class: ZombieBundle\Managers\Individu\IndividusManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    utilisateurs_manager:
+        class: ZombieBundle\Managers\Individu\UtilisateursManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    security_manager:
+        class: ZombieBundle\Managers\Securite\SecurityManager
+        arguments: ["@service_container",  "@doctrine", "@templating", "@logger"]
+
+    connexions_manager:
+        class: ZombieBundle\Managers\Securite\ConnexionsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    credentials_manager:
+        class: ZombieBundle\Managers\Securite\CredentialsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    regions_manager:
+        class: ZombieBundle\Managers\Geo\RegionsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    recherches_sauvegardes_manager:
+        class: ZombieBundle\Managers\Recherche\RecherchesSauvegardesManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    reportings_sauvegardes_manager:
+        class: ZombieBundle\Managers\Reporting\ReportingsSauvegardesManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    interface_params_manager:
+        class: ZombieBundle\Managers\Gui\InterfaceParamsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    liste_manager:
+        class: ZombieBundle\Managers\Liste\ZombieListeManager
+        arguments: ["@doctrine", "@templating", "@logger", "@service_container"]
+
+    zombie_modules_manager:
+        class: ZombieBundle\Managers\Modules\ModulesManager
+        arguments: ["@logger", "@service_container"]
+
+    stopword_manager:
+        class: ZombieBundle\Managers\Word\StopWordManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    search_helper_manager:
+        class: ZombieBundle\Managers\Utils\SearchHelperManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+ 
+    societe_manager:
+        class: ZombieBundle\Managers\Entite\SocieteManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+     
+    individu_entites_manager:
+        class: ZombieBundle\Managers\Individu\IndividuEntitesManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+        
+    zombieprofils_manager:
+        class: ZombieBundle\Managers\Securite\ZombieProfilManager
+        arguments: ["@doctrine", "@logger", "@service_container"]

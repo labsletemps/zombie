@@ -1,0 +1,21 @@
+services:
+
+    security.access.chartbeat_article_metrics_voter:
+        class:      Seriel\ChartbeatBundle\Securite\Voters\ChartbeatArticleMetricsVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+
+    seriel_chartbeat.manager:
+        class: Seriel\ChartbeatBundle\Managers\ChartbeatManager
+        arguments: ["@service_container", "@logger", "%chartbeat%"]
+        
+    seriel_chartbeat.cbadr_manager:
+        class: Seriel\ChartbeatBundle\Managers\ChartbeatArticleDayReportManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+        
+    seriel_chartbeat.article_metrics_manager:
+        class: Seriel\ChartbeatBundle\Managers\ChartbeatArticleMetricsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+        

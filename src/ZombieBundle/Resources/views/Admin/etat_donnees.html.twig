@@ -1,0 +1,47 @@
+<span class="nav_widget">etatDonneesInfosNav</span>
+
+<div class="compte_info_content">
+    <div class="actions ui-layout-north">
+        <ul>
+            <li>
+                <span>Etat des données</span>
+            </li>
+        </ul>
+    </div>
+    <div class="compte_info_content_2 ui-layout-center">
+        <div class="compte_info_informations_infos_1">
+        	<div  class="di_content_3">	
+        		<div class="title" >Articles</div>
+                <ul class="cul-list checkmark list-green">
+                    {% for stateImport in article %}
+                    <li {% if not stateImport.isRecent %}class="xmark list-red"{% endif %}>{{ stateImport.name }} ({{ stateImport.date |date("d/m/Y") }})</li>
+                {% endfor %}
+                </ul>
+            </div>
+        	<div  class="di_content_3">	
+        		<div class="title" >Metrics</div>
+                <ul class="cul-list checkmark list-green">
+                    {% for stateImport in metrics %}
+                    <li {% if not stateImport.isRecent %}class="xmark list-red"{% endif %}>{{ stateImport.name }} ({{ stateImport.date |date("d/m/Y") }})</li>
+                {% endfor %}
+                </ul>
+            </div>
+        	<div  class="di_content_3">	
+        		<div class="title" >Semantiques</div>
+                <ul class="cul-list checkmark list-green">
+                    {% for stateImport in semantiques %}
+                    <li {% if not stateImport.isRecent %}class="xmark list-red"{% endif %}>{{ stateImport.name }} ({{ stateImport.date |date("d/m/Y") }})</li>
+                {% endfor %}
+                </ul>
+            </div>
+        	<div  class="di_content_3">	
+        		<div class="title" >Trends</div>
+                <ul class="cul-list checkmark list-green">
+                    {% for stateImport in trends %}
+                    <li {% if not stateImport.isRecent %}class="xmark list-red"{% endif %}>{{ stateImport.name }} ({{ stateImport.date |date("d/m/Y") }})</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>    
+    </div>
+</div>	

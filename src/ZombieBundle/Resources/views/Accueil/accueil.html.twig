@@ -1,0 +1,174 @@
+{% set uid = uid('accueil') %}
+
+<span class="nav_widget">accueilNav</span>
+
+<div class="accueil_div">
+<div class="accueil_div_listes ui-layout-center">
+<div class="accueil_head actions ui-layout-north" layout-size="34">
+<ul>
+</ul>
+</div>
+
+<div class="accueil_container ui-layout-center{% if menu_right_empty %} menu_left_only{% elseif menu_left_empty %} menu_right_only{% else %} menu_both{% endif %}">
+
+<div class="left_block ui-layout-west scrollable" layout-size="{% if menu_left is defined %}180{% else %}300{% endif %}">
+{% set menu_had_first = false %}
+
+{% set ul_opened = false %}
+{% for elem in menu_left %}
+{% if (elem.option2 == 'group') %}
+{% if (ul_opened == true) %}</ul>{% set ul_opened = false %}{% endif %}
+<span class="title{{ elem.option4 ? ' title_' ~ elem.option4 : '' }}"><span>{{ elem.option3 }}</span></span>
+{% elseif (elem.option2 == 'list' and listesByRsId[elem.option4] is defined) %}
+{% set title = elem.option5 is not null and elem.option5 is not empty ? elem.option5 : elem.option3 %}
+{% if (ul_opened == false) %}<ul>{% set ul_opened = true %}{% endif %}
+<li {% if (menu_had_first == false) %}class="selected" {% set menu_had_first = true %}{% endif %}list="rs_{{ elem.option4 }}" title="{{ title }}"><div class="cont" rs_id="{{ elem.option4 }}">{{ title }}</div> <span class="qte">{% if listesByRsId[elem.option4] is defined and listesByRsId[elem.option4] is not empty %}{{ listesByRsId[elem.option4]['elems'].totalResults }}{% endif %}</span></li>
+{% elseif (elem.option2 == 'report' and reportSaveById[elem.option4] is defined) %}
+{% set title = elem.option5 is not null and elem.option5 is not empty ? elem.option5 : elem.option3 %}
+{% if (ul_opened == false) %}<ul>{% set ul_opened = true %}{% endif %}
+<li class="report{% if (menu_had_first == false) %} selected{% set menu_had_first = true %}{% endif %}" report="report_save_{{ elem.option4 }}" title="{{ title }}"><div class="cont" rs_id="{{ elem.option4 }}">{{ title }}</div> </li>
+{% endif %}
+{% endfor %}
+{% if (ul_opened == true) %}</ul>{% set ul_opened = false %}{% endif %}
+
+</div>
+
+<div class="accueil_list ui-layout-center">
+
+{% set list_had_first = false %}
+{% for elem in menu_left %}
+{% if (elem.option2 == 'list')%}
+{% set rs_id = elem.option4 %}
+{% set list_infos = listesByRsId[rs_id] is defined ? listesByRsId[rs_id] : null  %}
+{% if list_infos is not null %}
+<div class="accueil_list_block accueil_list_rs_{{ rs_id }}{% if (list_had_first == false) %} visible{% set list_had_first = true %}{% endif %}">
+{% set options = { 'context': 'rs_' ~ rs_id } %}
+{% if list_infos['columns'] is defined and list_infos['columns'] is not empty and list_infos['columns'] is not null %}{% set options = options|merge({'columns': list_infos['columns'], 'no_config': true }) %}{% endif %}
+{% if list_infos['filters'] is defined and list_infos['filters'] is not empty and list_infos['filters'] is not null %}{% set options = options|merge({'filters': list_infos['filters'] }) %}{% endif %}
+{{ liste(list_infos['elems'], 'rs_' ~ rs_id, list_infos['type'], options) }}
+</div>
+{% endif %}
+{% elseif (elem.option2 == 'report')%}
+{% set rs_id = elem.option4 %}
+{% set report_save = reportSaveById[rs_id] is defined ? reportSaveById[rs_id] : null %}
+{% if report_save is not null %}
+<div class="accueil_report res_only accueil_list_report_save_{{ rs_id }}{% if (list_had_first == false) %} visible{% set list_had_first = true %}{% endif %}" type="{{ report_save.type }}" report_str="{{ report_save.chaineReporting }}" editables_str="{{ report_save.chaineEditables }}">
+
+<div class="reporting_container">
+  <div class="options">
+    <div class="reporting_first_step">
+      <div class="title"><span class="num">1.</span> FILTRES</div>
+      <div class="cnt">
+{% if report_save.type == 'fournisseur' %}{% include "SanteServiceBundle:Recherche:fournisseur_search_ul.html.twig" %}{% endif %}
+{% if report_save.type == 'connexion' %}{% include "SanteServiceBundle:Recherche:connexion_search_ul.html.twig" %}{% endif %}
+      </div>
+    </div>
+    <div class="reporting_second_step">
+      <div class="title"><span class="num">2.</span> LIGNES / COLONNES</div>
+      <div class="cnt">
+        {{ report_col_row(report_save.type) }}
+      </div>
+    </div>
+    <div class="reporting_third_step">
+      <div class="title"><span class="num">3.</span> DONN&Eacute;ES AFFICH&Eacute;ES</div>
+      <div class="cnt">
+        {{ report_datas_widget(report_save.type, 'datas', 'qte', { 'multi': 1, 'has_resume': 1, 'title': 'Choix des données affichées', 'fixed_title': 1 }) }}
+      </div>
+    </div>
+  </div>
+      
+  <div class="reporting_fourth_step">
+      <div class="title"><span class="num">4.</span> <span class="reporting_button"></span><span class="right_buttons">{% if report_save.chaineEditables is not empty %}{{ list_search_widget(report_save.type, report_save.chaineEditables) }}{% endif %}<span class="action report_save">Enregistrer</span><span class="action report_load">Charger</span><span class="action report_export">Exporter</span></span></div>
+      <div class="cnt">
+          
+      </div>
+  </div>
+      
+</div>
+
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for elem in menu_right %}
+{% if (elem.option2 == 'list') %}
+{% set rs_id = elem.option4 %}
+{% set list_infos = listesByRsId[rs_id] is defined ? listesByRsId[rs_id] : null  %}
+{% if list_infos is not null %}
+<div class="accueil_list_block accueil_list_rs_{{ rs_id }}{% if (list_had_first == false) %} visible{% set list_had_first = true %}{% endif %}">
+{% set options = { 'context': 'rs_' ~ rs_id } %}
+{% if list_infos['columns'] is defined and list_infos['columns'] is not empty and list_infos['columns'] is not null %}{% set options = options|merge({'columns': list_infos['columns'], 'no_config': true }) %}{% endif %}
+{% if list_infos['filters'] is defined and list_infos['filters'] is not empty and list_infos['filters'] is not null %}{% set options = options|merge({'filters': list_infos['filters'] }) %}{% endif %}
+{{ liste(list_infos['elems'], 'rs_' ~ rs_id, list_infos['type'], options) }}
+</div>
+{% endif %}
+{% elseif (elem.option2 == 'report')%}
+{% set rs_id = elem.option4 %}
+{% set report_save = reportSaveById[rs_id] is defined ? reportSaveById[rs_id] : null %}
+{% if report_save is not null %}
+<div class="accueil_report res_only accueil_list_report_save_{{ rs_id }}{% if (list_had_first == false) %} visible{% set list_had_first = true %}{% endif %}" type="{{ report_save.type }}" report_str="{{ report_save.chaineReporting }}" editables_str="{{ report_save.chaineEditables }}">
+
+<div class="reporting_container">
+  <div class="options">
+    <div class="reporting_first_step">
+      <div class="title"><span class="num">1.</span> FILTRES</div>
+      <div class="cnt">
+{% if report_save.type == 'fournisseur' %}{% include "SanteServiceBundle:Recherche:fournisseur_search_ul.html.twig" %}{% endif %}
+{% if report_save.type == 'connexion' %}{% include "SanteServiceBundle:Recherche:connexion_search_ul.html.twig" %}{% endif %}
+      </div>
+    </div>
+    <div class="reporting_second_step">
+      <div class="title"><span class="num">2.</span> LIGNES / COLONNES</div>
+      <div class="cnt">
+        {{ report_col_row(report_save.type) }}
+      </div>
+    </div>
+    <div class="reporting_third_step">
+      <div class="title"><span class="num">3.</span> DONN&Eacute;ES AFFICH&Eacute;ES</div>
+      <div class="cnt">
+        {{ report_datas_widget(report_save.type, 'datas', 'qte', { 'multi': 1, 'has_resume': 1, 'title': 'Choix des données affichées', 'fixed_title': 1 }) }}
+      </div>
+    </div>
+  </div>
+      
+  <div class="reporting_fourth_step">
+      <div class="title"><span class="num">4.</span> <span class="reporting_button"></span><span class="right_buttons">{% if report_save.chaineEditables is not empty %}{{ list_search_widget(report_save.type, report_save.chaineEditables) }}{% endif %}<span class="action report_save">Enregistrer</span><span class="action report_load">Charger</span><span class="action report_export">Exporter</span></span></div>
+      <div class="cnt">
+          
+      </div>
+  </div>
+      
+</div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+</div>
+
+{% if menu_right is defined %}
+<div class="right_block ui-layout-east scrollable" layout-size="180">
+{% set ul_opened = false %}
+{% for elem in menu_right %}
+{% if (elem.option2 == 'group') %}
+{% if (ul_opened == true) %}</ul>{% set ul_opened = false %}{% endif %}
+<span class="title{{ elem.option4 ? ' title_' ~ elem.option4 : '' }}"><span>{{ elem.option3 }}</span></span>
+{% elseif (elem.option2 == 'list' and listesByRsId[elem.option4] is defined) %}
+{% set title = elem.option5 is not null and elem.option5 is not empty ? elem.option5 : elem.option3 %}
+{% if (ul_opened == false) %}<ul>{% set ul_opened = true %}{% endif %}
+<li {% if (menu_had_first == false) %}class="selected" {% set menu_had_first = true %}{% endif %} list="rs_{{ elem.option4 }}" title="{{ title }}"><div class="cont" rs_id="{{ elem.option4 }}">{{ title }}</div> <span class="qte">{% if listesByRsId[elem.option4] is defined and listesByRsId[elem.option4] is not empty %}{{ listesByRsId[elem.option4]['elems'].totalResults }}{% endif %}</span></li>
+{% elseif (elem.option2 == 'report' and reportSaveById[elem.option4] is defined) %}
+{% set title = elem.option5 is not null and elem.option5 is not empty ? elem.option5 : elem.option3 %}
+{% if (ul_opened == false) %}<ul>{% set ul_opened = true %}{% endif %}
+<li class="report{% if (menu_had_first == false) %} selected{% set menu_had_first = true %}{% endif %}" report="report_save_{{ elem.option4 }}" title="{{ title }}"><div class="cont" rs_id="{{ elem.option4 }}">{{ title }}</div> </li>
+{% endif %}
+{% endfor %}
+{% if (ul_opened == true) %}</ul>{% set ul_opened = false %}{% endif %}
+</div>
+{% endif %}
+
+</div>
+
+</div>
+</div>

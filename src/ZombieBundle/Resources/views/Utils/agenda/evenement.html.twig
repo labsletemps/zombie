@@ -1,0 +1,14 @@
+{% if evt.type == 'art' %}
+{% set art = evt.elem %}
+<span class="event_new planning_event event_art{% if art.dateparution is null %} non_valide{% endif %} {{ art.section |remove_accent |lower }}" hash="article[{{ art.id }}]" date="{{ evt.date|date('Y-m-d H:i:s') }}" type_elem="art" id_elem="{{ art.id }}" titre="{{ art.titre }}" chapeau="{{ art.chapeau }}" motcle="{{ art.motcle }}" section="{{ art.section }}" auteur="{{ art.auteur }}" >
+  <span class="head">
+    <span class="when">{{ art.dateparution | date('H:i') }} - <span class="categorie">{{ art.section }}</span></span>
+    <span class="titre">{{ art.titre }}</span>
+    
+  </span>
+  <span class="cnt">
+    <span class="who">{{ art.auteur }}</span>
+   </span>
+</span>
+{% endif %}
+

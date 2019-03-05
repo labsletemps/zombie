@@ -1,0 +1,10 @@
+services:
+
+    le_temps.arts_manager:
+        class: LeTempsSourcesBundle\Managers\ArticleCsvManager
+        arguments: ["@logger", "@service_container"]
+        
+    le_temps.arts_cimetiere_manager:
+        class: LeTempsSourcesBundle\Managers\ArticleCimetiereManager
+        arguments: ["@logger", "@service_container"]
+        

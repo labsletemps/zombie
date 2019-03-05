@@ -1,0 +1,17 @@
+<span ajax_url="/widget/compte/search" name="{% if name is defined and name %}{{ name }}{% else %}select_compte{% endif %}" val="{% if value is defined and value %}{{ value }}{% endif %}" class="widget select_compte_widget{% if thin %} thin{% endif %}{% if multi %} widget_multi{% endif %}{% if disabled is defined and disabled %} disabled{% endif %}"{% if resume_name is defined and resume_name %} resume_name="{{ resume_name }}"{% endif %}{% if resume_pos is defined and resume_pos %} resume_pos="{{ resume_pos }}"{% endif %}>
+<span class="button"></span>
+<span class="content">
+  <ul>
+{% if comptes is defined and comptes is not empty %}
+{% for compte in comptes %}
+<li class="ui-widget-content" val="{{ compte.id }}">{{ compte.nom }}</li>
+{% endfor %}
+{% endif %}
+  </ul>
+</span>
+{% if filtre_structure is defined and filtre_structure is not null and filtre_structure %}
+<span class="extra_params hidden">
+<span><span class="param_name">structure</span><span class="param_value">{{ filtre_structure }}</span></span>
+</span>
+{% endif %}
+</span>

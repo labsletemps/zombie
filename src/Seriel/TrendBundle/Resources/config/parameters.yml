@@ -1,0 +1,11 @@
+parameters:
+    zombie.modules.googleTrend:
+        service: seriel_trend.manager
+        service_trend: seriel_trend.google_trends_manager
+        semantique_similarity: seriel_related_word.manager
+        StateTrends: seriel_trend.google_trends_manager
+    zombie.modules.crossTrend:
+        service: seriel_trend.cross_trends_manager
+        service_trend: seriel_trend.cross_trends_manager
+        semantique_similarity: seriel_related_word.manager
+        percent_agregation: 80

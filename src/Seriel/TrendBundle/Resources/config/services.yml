@@ -1,0 +1,10 @@
+services:
+    seriel_trend.manager:
+        class: Seriel\TrendBundle\Managers\TrendManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_trend.google_trends_manager:
+        class: Seriel\TrendBundle\Managers\GoogleTrendManager
+        arguments: ["@service_container", "@logger"]
+    seriel_trend.cross_trends_manager:
+        class: Seriel\TrendBundle\Managers\CrossTrendManager
+        arguments: ["@service_container", "@logger"]

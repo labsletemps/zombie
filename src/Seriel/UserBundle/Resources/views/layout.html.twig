@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Zombie - Le Temps{% endblock %}</title>
+  <link rel="icon" type="image/png" href="/favicon-zombie.png" />
+  
+  {% javascripts '@SerielUserBundle/Resources/public/js/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+
+<script>
+{% block javascripts %}
+{% endblock %}
+
+</script>
+{% stylesheets 'bundles/serieluser/css/*' 'bundles/serieluser/css/seriel/*' filter='cssrewrite' %}
+  <link rel="stylesheet" href="{{ asset_url }}">
+  {% endstylesheets %}
+
+{% stylesheets 'bundles/zombie/css/login.css' filter='cssrewrite' %}
+<link rel="stylesheet" href="{{ asset_url }}">
+{% endstylesheets %}
+
+</head>
+<body>
+  {% for type, messages in app.session.flashbag.all() %}
+    {% for message in messages %}
+      <div class="flash-{{ type }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endfor %}
+
+  <div class="login ser_widget_container">
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+  </div>
+</body>
+</html>

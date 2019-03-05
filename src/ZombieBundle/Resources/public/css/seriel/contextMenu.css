@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+.context-menu-item {
+	line-height: 18px;
+}
+
+.context-menu-item.hover {
+    cursor: pointer;
+    background-color: #95172c;
+    color: white;
+}
+
+.context-menu-item.icon { min-height: 18px; background-repeat: no-repeat; background-position: 4px center; }
+.context-menu-item.icon-edit { background-image: url(../../images/charte/coquette/16x16/edit.png); }
+.context-menu-item.icon-open { background-image: url(../../images/charte/coquette/16x16/open_folder.png); }
+.context-menu-item.icon-close { background-image: url(../../images/charte/coquette/16x16/delete.png); }
+.context-menu-item.icon-cut { background-image: url(../../images/charte/coquette/16x16/cut.png); }
+.context-menu-item.icon-copy { background-image: url(../../images/charte/coquette/16x16/copy_paste.png); }
+.context-menu-item.icon-paste { background-image: url(../../images/charte/coquette/16x16/paste.png); }
+.context-menu-item.icon-delete { background-image: url(../../images/charte/coquette/16x16/delete.png); }
+.context-menu-item.icon-add { background-image: url(../../images/charte/coquette/16x16/add.png); }
+.context-menu-item.icon-quit { background-image: url(images/door.png); }
+
+.context-menu-item.icon-closedock { background-image: url(../../images/charte/close_orange.png); background-size: 12px 12px; }
+.context-menu-item.icon-closedockothers { background-image: url(../../images/charte/dock_close_others.png); background-size: 12px 12px; }
+.context-menu-item.icon-closedockright { background-image: url(../../images/charte/dock_close_right.png); background-size: 12px 12px; }
+.context-menu-item.icon-closedockleft { background-image: url(../../images/charte/dock_close_left.png); background-size: 12px 12px; }
+.context-menu-item.icon-closedockall { background-image: url(../../images/charte/dock_close_all.png); background-size: 12px 12px; }
+
+.context-menu-item.icon-valid { background-image: url(../../images/charte/coquette/16x16/accept.png); }
+.context-menu-item.icon-refus { background-image: url(../../images/charte/coquette/16x16/block.png); }
+.context-menu-item.icon-cloture { background-image: url(../../images/charte/coquette/16x16/etat_cloture.png); }
+.context-menu-item.icon-business { background-image: url(../../images/charte/coquette/16x16/edit_business_user.png); }
+
+.context-menu-item.icon-compte { background-image: url(../../images/charte/compte.png); background-size: 20px 20px; background-position: -3px middle }
+
+.context-menu-item.icon-save { background-image: url(../../images/charte/coquette/16x16/save.png); }
+.context-menu-item.icon-load { background-image: url(../../images/charte/coquette/16x16/blue_arrow_up.png); }
+.context-menu-item.icon-config { background-image: url(../../images/charte/coquette/16x16/process.png); }
+
+.context-menu-item.icon-home { background-image: url(../../images/charte/coquette/16x16/home.png); }
+.context-menu-item.icon-view { background-image: url(../../images/charte/coquette/16x16/tag_green.png); }
+
+.context-menu-item.icon-refac { background-image: url(../../images/charte/facture_ae_16.png); }
+
+.context-menu-item.icon-check { background-image: url(../../images/charte/checkbox_on_small.png); }
+.context-menu-item.icon-uncheck { background-image: url(../../images/charte/checkbox_off_small.png); }

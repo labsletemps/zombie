@@ -1,0 +1,83 @@
+<span class="nav_widget">articleInfosNav</span>
+
+<div class="presta_info_content">
+    <div class="actions ui-layout-north">
+        <ul>
+            <li shortcut="Alt+V">
+                <span>Article</span>
+                <ul>
+                    <li class="action" action="infos" shortcut="Ctrl+O"><span>#TODO</span></li>
+                </ul>
+            </li>
+		    {% if is_granted('view_docs', article) and is_granted('edit_ajout_pj', article) %}
+            <li shortcut="Alt+O">
+		        <span>Documents</span>
+		        <ul>
+		  	        <li class="action" action="lier_doc"><span>Lier un document</span></li>
+		  	    </ul>
+		    </li>
+		    {% endif %}
+            <li shortcut="Alt+P">
+                <span>Imprimer</span>
+                <ul>
+                    <li class="action" action="imprimer" shortcut="Ctrl+P"><span>Imprimer l'article</span></li>
+                </ul>
+            </li>
+            <li>
+				<span>Historique Actions</span>
+				<ul>
+					<li class="action" action="traces" shortcut="Ctrl+T"><span>Voir les actions</span></li>
+				</ul>
+			</li>
+        </ul>
+        <span class="action_buttons">
+          <span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer les modifications</span></span>
+        </span>
+    </div>
+    <div class="presta_info_content_2 ui-layout-center">
+        <div class="left_helper ui-layout-west">
+            <div class="ancre" ancre="informations"><span>Informations</span></div>
+            <div class="ancre" ancre="article"><span>Article</span></div>
+            {% if is_granted('view_docs', article) %}<div class="ancre" ancre="documents"><span>Documents</span></div>{% endif %}
+        </div>
+        <div class="presta_info_content_3 scrollable ui-layout-center">
+
+            <div class="block_ancre block_ancre_informations" ancre_block="informations">
+                <div class="di_informations">
+                    <span class="article_id hidden">{{ article.id }}</span>
+                    <div class="presta_info_informations_infos_1 can_copy">
+                        <div class="title" >Informations</div>
+                        {% set url = article.url %}
+                        Titre : <span class="nom"> {% if url is not null and url is not empty %}<a class="link" href="{{ url }}" target="_blank">{{ article.titre }}</a>{% else %}{{ article.titre }}{% endif %}</span><br/>
+                        Section : <span class="section"> {{ article.section }}</span><br/>
+                        Date de parution : le <span class="date_parution date">{{ article.dateParution|date('d.m.Y') }}</span> &agrave; <span class="date_parution time">{{ article.dateParution|date('H:i') }}</span> <br/>
+                        Nombre de mots : <span class="nb_words"> {{ article.nbWords }}</span><br/>
+                    </div>
+                    <div class="di_informations_infos_2 can_copy">
+                        Chapeau : <span class="chapeau">{{ article.chapeau|raw }}</span><br/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="block_ancre block_ancre_article" ancre_block="article">
+                <div class="article_content">
+                    <div class="article_content_block can_copy">
+                        <div class="title" >Article</div>
+                        <span class="article_art">{{ article.content|replace({'\\"': '"'})|raw }}</span><br/>
+                    </div>
+                </div>
+            </div>
+
+            {% if is_granted('view_docs', article) %}
+            <div class="block_ancre block_ancre_documents" ancre_block="documents">
+                <div class="di_documents">
+                    <div class="info_left">
+                        <div class="title" >Documents</div>
+                        {% include "SanteServiceBundle:Documents:block_documents.html.twig" with {'obj': article, 'files': article.files} only %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

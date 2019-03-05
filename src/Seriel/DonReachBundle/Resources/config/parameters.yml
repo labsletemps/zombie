@@ -1,0 +1,6 @@
+
+parameters:
+    zombie.modules.donreach:
+        service: seriel_donreach.manager
+        metrics_object_class: Seriel\DonReachBundle\Entity\DonReachArticleMetrics
+        StateMetrics: seriel_donreach.manager

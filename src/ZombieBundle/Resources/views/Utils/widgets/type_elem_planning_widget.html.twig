@@ -1,0 +1,11 @@
+<span name="{% if name is defined and name %}{{ name }}{% else %}Type d'&eacute;l&eacute;ment{% endif %}" val="{% if value is defined and value %}{{ value }}{% endif %}" class="widget type_elem_planning_widget{% if thin %} thin{% endif %}{% if multi %} widget_multi{% endif %}{% if disabled is defined and disabled %} disabled{% endif %}"{% if resume_name is defined and resume_name %} resume_name="{{ resume_name }}"{% endif %}{% if resume_pos is defined and resume_pos %} resume_pos="{{ resume_pos }}"{% endif %}>
+<span class="button">{% if title is defined and title %}<span class="title{% if fixed_title is defined and fixed_title %} fixed{% endif %}">{{ title }}</span>{% endif %}</span>
+<span class="content">
+  <ul>
+{% for key,name in types_elems %}<li class="ui-widget-content" val="{{ key }}">{{ name }}</li>{% endfor %}
+  </ul>
+</span>
+{% if has_resume is defined and has_resume %}
+<span class="resume"></span>
+{% endif %}
+</span>

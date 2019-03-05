@@ -1,0 +1,49 @@
+{# src/ZombieBundle/Resources/views/Planning/planning.html.twig #}
+
+{% set uid = uid('planning') %}
+
+<span class="nav_widget">planningNav</span>
+
+<div class="menu_left menu_planning ui-layout-west" layout-size="244">
+
+    <div id="planning_accordion_container">
+        <div id="planning_accordion">
+            <h3>Filtrer</h3>
+            <div>
+                <ul class="filter_ul">
+                    <li>
+                    	{{ date_widget('periode', date, { 'title': 'Période', 'has_resume': 1, 'widget_options': { 'prefered_pos': 'right', 'tabs': 'week' } }) }}
+                    </li>
+                    <li>
+                      <span class="widget search_ticket">
+                        <span class="button">Articles</span>
+                        <span class="content search_ticket_ticket">
+                          	<span class="line inp"><label>Titre</label><span class="inp_container"><input type="text" name="titre" class="titre_inp def_focus" resume_pos="1" resume_name="titre" /></span></span>
+                            <span class="line inp"><label>Chapeau</label><span class="inp_container"><input type="text" name="chapeau" class="chapeau_inp" resume_pos="2" resume_name="chapeau" /></span></span>
+                            <span class="line inp"><label>Mot cl&eacute;</label><span class="inp_container"><input type="text" name="motcle" class="motcle_inp" resume_pos="3" resume_name="mot-clé" /></span></span>
+                            <span class="line inp"><label>Auteur</label><span class="inp_container"><input type="text" name="auteur" class="auteur_inp" resume_pos="4" resume_name="auteur" /></span></span>
+                            <span class="line inp"><label>Section</label><span class="inp_container">{{ section_widget('section', null,{ 'resume_name': 'section', 'resume_pos': 5, 'multi': true }) }}</span></span>               
+                        </span>
+                        <span class="resume"></span>
+                      </span>
+                    </li>
+                </ul>
+                <span class="empty_button"></span>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="cont ui-layout-center">
+  <div class="planning_container nb_days_7">
+    
+    {% include "ZombieBundle:Planning:planning_content.html.twig" %}
+    
+  </div>
+</div>
+
+<div class="menu_right ui-layout-east" layout-size="44"></div>

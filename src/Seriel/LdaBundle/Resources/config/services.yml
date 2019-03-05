@@ -1,0 +1,10 @@
+services:
+    seriel_lda.manager:
+        class: Seriel\LdaBundle\Managers\LdaManager
+        arguments: ["@service_container", "@logger"]
+    seriel_lda.lda_word_manager:
+        class: Seriel\LdaBundle\Managers\LdaWordManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_lda.lda_topic_manager:
+        class: Seriel\LdaBundle\Managers\LdaTopicManager
+        arguments: ["@doctrine", "@logger", "@service_container"]

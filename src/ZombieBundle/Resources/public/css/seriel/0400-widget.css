@@ -1,0 +1,796 @@
+@CHARSET "UTF-8";
+
+.widget > .button {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	padding: 2px 8px;
+	border: solid 1px #cccccc;
+	min-width: 120px;
+	padding-right: 24px;
+	cursor: default;
+	background-color: white;
+
+	margin-bottom: 1px;
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.widget.time_widget > .button {
+	min-width: 40px;
+	width: 40px;
+	max-width: 40px;
+	text-align: center;
+}
+
+.widget > .button > span.complement {
+	display: none;
+}
+.widget.thin > .button {
+	padding-top: 1px;
+	line-height: .95em;
+	text-align: left;
+}
+.widget > .button.active,
+.widget > .button:active {
+	color: #95172c;
+}
+.widget > .button::after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 16px;
+	top: 0;
+	right: 0px;
+	bottom: 0;
+	background: url(../../images/charte/widget_pict_grey.png) center center no-repeat #eeeeee;
+}
+.widget > .button:hover::after,
+.widget > .button.active::after {
+	background: url(../../images/charte/widget_pict_blue.png) center center no-repeat #eddadd;
+}
+
+.widget > .button .details {
+	font-size: .85em;
+	font-style: italic;
+	color: #bd3b51;
+}
+
+.ser_widget_container {
+	display: block;
+	position: absolute;
+	background-color: white;
+	box-shadow: 0 0 4px -1px #252525;
+	max-height: 500px;
+	overflow-y: auto;
+	z-index: 1002;
+}
+.full_open .ser_widget_container {
+	max-height: none;
+}
+.ser_widget_container .en_cours_de_dev::after {
+	display: block;
+	padding: 20px 30px;
+	content: "En cours de développement";
+	color: #444444;
+}
+.widget .content {
+	display: none;
+}
+
+.widget .resume {
+	position: relative;
+}
+.widget .resume > .res {
+	position: relative;
+	display: block;
+	padding-left: 5px;
+}
+.widget .resume > .res > label {
+	display: inline-block;
+	position: relative;
+	margin-left: 0.3em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+.widget .resume > .res.check > label {
+	padding-left: 15px;
+	background: url(../../images/charte/checked_very_small.png) 0 5px no-repeat;
+}
+.widget .resume > .res > .res_val {
+	display: inline-block;
+	position: relative;
+	font-weight: bold;
+	margin-left: 0.3em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+.widget .resume > .res > .res_val > ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.widget .resume > .res:first-child {
+	padding-top: 3px;
+}
+
+.ser_widget_head,
+.date_widget_head,
+.time_widget_head,
+.duree_widget_head,
+.multichoice_widget_head {
+	display: block;
+	min-height: 30px;
+	background-color: #eaeaea;
+}
+.ser_widget_head .close {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	background: url(../../images/charte/close_widget.png) center center no-repeat;
+	cursor: pointer;
+}
+.multichoice_widget_head {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 3px 10px;
+}
+
+.ser_widget_head > .head_content {
+	padding-right: 20px;
+}
+
+.date_widget_head > ul,
+.time_widget_head > ul,
+.duree_widget_head > ul,
+.ser_widget_head > .head_content > ul {
+	margin: 0;
+	padding: 0 10px;
+	list-style: none;
+	white-space: nowrap;
+}
+.date_widget_head > ul > li,
+.time_widget_head > ul > li,
+.duree_widget_head > ul > li,
+.ser_widget_head > .head_content > ul > li {
+	display: inline-block;
+	padding-top: 4px;
+	padding-right: 1px;
+	cursor: pointer;
+}
+.date_widget_head > ul > li > span,
+.time_widget_head > ul > li > span,
+.duree_widget_head > ul > li > span,
+.ser_widget_head > .head_content > ul > li > span {
+	display: block;
+	padding: 3px 9px 7px 9px;
+	cursor: pointer;
+}
+.date_widget_head > ul > li.empty,
+.time_widget_head > ul > li.empty,
+.duree_widget_head > ul > li.empty,
+.ser_widget_head > .head_content > ul > li.empty {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.date_widget_head > ul > li.empty > span,
+.time_widget_head > ul > li.empty > span,
+.duree_widget_head > ul > li.empty > span,
+.ser_widget_head > .head_content > ul  > li.empty > span {
+	padding: 5px 9px 5px 25px;
+	color: #a42f42;
+	background-image: url(../../images/charte/trash_small_orange.png);
+	background-position: 8px 5px;
+	background-repeat: no-repeat;
+}
+.date_widget_head > ul > li:hover > span,
+.time_widget_head > ul > li:hover > span,
+.duree_widget_head > ul > li:hover > span,
+.ser_widget_head > .head_content > ul > li:hover > span {
+	background-color: #f0f0f0;
+	color: #95172c;
+}
+.date_widget_head > ul > li.selected > span,
+.date_widget_head > ul > li:active > span,
+.time_widget_head > ul > li.selected > span,
+.time_widget_head > ul > li:active > span,
+.duree_widget_head > ul > li.selected > span,
+.duree_widget_head > ul > li:active > span,
+.ser_widget_head > .head_content > ul > li.selected > span,
+.ser_widget_head > .head_content > ul > li:active > span {
+	background-color: white;
+	color: #95172c;
+}
+
+.date_widget_head > ul > li.empty:hover > span,
+.time_widget_head > ul > li.empty:hover > span,
+.duree_widget_head > ul > li.empty:hover > span,
+.ser_widget_head > .head_content > ul > li.empty:hover > span {
+	color: #a42f42;
+}
+.date_widget_head > ul > li.empty.selected > span,
+.date_widget_head > ul > li.empty:active > span,
+.time_widget_head > ul > li.empty.selected > span,
+.time_widget_head > ul > li.empty:active > span,
+.duree_widget_head > ul > li.empty.selected > span,
+.duree_widget_head > ul > li.empty:active > span,
+.ser_widget_head > .head_content > ul > li.empty.selected > span,
+.ser_widget_head > .head_content > ul > li.empty:active > span {
+	color: #a42f42;
+	box-shadow: inset 0 0 6px -3px #202020;
+}
+
+.ser_widget_head > .head_content > .search {
+	padding-left: 20px;
+	padding-right: 0px;
+	padding-bottom: 4px;
+	padding-top: 0;
+	text-align: center;
+}
+.ser_widget_head > .head_content > .search input {
+	border-radius: 5px;
+	padding: 2px 1%;
+	width: 94%;
+	text-align: left;
+}
+
+.time_widget_content {
+	display: block;
+	background-color: white;
+}
+.time_widget_content .timeblock_container {
+	position: relative;
+}
+.time_widget_content > div {
+	display: block;
+	padding: 10px;
+}
+
+.time_widget_content .hour,
+.time_widget_content .minutes {
+	width: 40px;
+	display: inline-block;
+	text-align: center;
+}
+.time_widget_content .hour input,
+.time_widget_content .minutes input {
+	width: 34px;
+	display: inline-block;
+	text-align: center;
+	
+	
+}
+
+.time_widget_content .hour input[type=number]::-webkit-inner-spin-button,
+.time_widget_content .minutes input[type=number]::-webkit-inner-spin-button, 
+.time_widget_content .hour input[type=number]::-webkit-outer-spin-button,
+.time_widget_content .minutes input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.time_widget_content .plus,
+.time_widget_content .minus {
+	width: 36px;
+	height: 20px;
+	display: inline-block;
+	text-align: center;
+	cursor: default;
+	border-radius: 3px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.time_widget_content .plus {
+	background-image: url(../../images/charte/arrow_top_blue.png);
+}
+.time_widget_content .minus {
+	background-image: url(../../images/charte/arrow_bottom_blue.png);
+	margin-top: 3px;
+}
+.time_widget_content .plus:hover,
+.time_widget_content .minus:hover {
+	background-color: #e8e8e8;
+}
+
+
+.date_widget_content {
+	display: block;
+	min-height: 225px;
+	background-color: white;
+}
+.date_widget_content > div {
+	display: none;
+	padding: 10px;
+}
+.date_widget_content > div.selected {
+	display: block;
+	position: relative;
+}
+.date_widget_content > div > .en_cours_de_dev {
+	display: block;
+}
+.date_widget_content > div > .en_cours_de_dev::after {
+	display: block;
+	padding: 20px 30px;
+	content: "En cours de développement";
+	color: #444444;
+}
+
+.ser_multichoice_widget_content {
+	overflow-x: hidden;
+}
+.ser_multichoice_widget_content > span.title {
+	display: block;
+	position: relative;
+	top: 10px;
+	padding: 5px 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #222;
+	text-align: center;
+	border-bottom: solid 1px black;
+}
+.ser_multichoice_widget_content > ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: auto;
+	min-height: 50px;
+	padding: 15px;
+}
+.ser_multichoice_widget_content > ul > li {
+	display: block;
+	visibility: visible;
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+	padding-left: .5em;
+	padding-right: .5em;
+	padding-top: 3px;
+	padding-bottom: 3px;
+
+	max-width: 300px;
+	opacity: 1;
+
+	transition-property: max-width, width, max-height, padding, margin;
+	transition-duration: 0.2s, 0.2s, 0.2s, 0.2s, 0.2s;
+}
+.ser_multichoice_widget_content > ul > li > span.complement {
+	display: block;
+	font-weight: normal;
+	font-size: 0.9em;
+	opacity: 0.7;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.ser_multichoice_widget_content > ul > li.too_many {
+	max-height: none;
+	opacity: .6;
+	text-align: center;
+}
+.ser_multichoice_widget_content > ul > span.title {
+	display: block;
+	position: relative;
+	margin: 5px 5px;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #222;
+	text-align: center;
+	border-bottom: solid 1px black;
+}
+
+.ser_multichoice_widget_content.multichoice_20a29 > ul,
+.ser_multichoice_widget_content.multichoice_30a39 > ul,
+.ser_multichoice_widget_content.multichoice_40a49 > ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: 25em;
+	padding: 15px;
+}
+
+.ser_multichoice_widget_content.multichoice_20a29 > ul > li,
+.ser_multichoice_widget_content.multichoice_30a39 > ul > li,
+.ser_multichoice_widget_content.multichoice_40a49 > ul > li {
+	display: inline-block;
+	width: 11em;
+	margin: 0;
+	margin-right: 3px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+	padding-left: .5em;
+	padding-right: .5em;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.ser_multichoice_widget_content.multichoice_50a59 > ul,
+.ser_multichoice_widget_content.multichoice_60a69 > ul,
+.ser_multichoice_widget_content.multichoice_70a79 > ul,
+.ser_multichoice_widget_content.multichoice_80a89 > ul,
+.ser_multichoice_widget_content.multichoice_90a99 > ul,
+.ser_multichoice_widget_content.multichoice_100_et_plus > ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: 35em;
+	padding: 15px;
+}
+
+.ser_multichoice_widget_content.multichoice_50a59 > ul > li,
+.ser_multichoice_widget_content.multichoice_60a69 > ul > li,
+.ser_multichoice_widget_content.multichoice_70a79 > ul > li,
+.ser_multichoice_widget_content.multichoice_80a89 > ul > li,
+.ser_multichoice_widget_content.multichoice_90a99 > ul > li,
+.ser_multichoice_widget_content.multichoice_100_et_plus > ul > li {
+	display: inline-block;
+	width: 10em;
+	max-width: 10em;
+	margin: 0;
+	margin-right: 3px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+	padding-left: .5em;
+	padding-right: .5em;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.ser_multichoice_widget_content > ul > li:hover {
+	background-color: #f8f8f8;
+}
+.ser_multichoice_widget_content > ul > li.ui-selecting {
+	color: #95172c;
+	background-color: #e1b0b8;
+}
+.ser_multichoice_widget_content > ul > li.ui-selected {
+	background-color: #95172c;
+	color: white;
+}
+
+.ser_multichoice_widget_content > ul > li.search_hidden {
+	max-width: 0;
+	max-height: 0;
+	opacity: .3;
+	padding: 0;
+	margin: 0;
+}
+
+.ui-datepicker {
+	position: relative;
+	display: block;
+	width: 14em;
+	padding: .2em .2em 0;
+}
+.ui-datepicker-header {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	min-height: 22px;
+}
+.month_selector > .ui-widget-header > table {
+	width: 23em;
+}
+
+.week_selector  {
+	width: 30em;
+}
+
+.week .ui-widget-header,
+.month .ui-widget-header {
+	color: #95172c;
+}
+
+.ui-datepicker-prev {
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 22px;
+	background: url(../../images/charte/date_picker_prev.png) center center no-repeat;
+	border-radius: 4px;
+}
+.ui-datepicker-next {
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	right: 0;
+	width: 20px;
+	height: 22px;
+	background: url(../../images/charte/date_picker_next.png) center center no-repeat;
+	border-radius: 4px;
+}
+
+.week .ui-datepicker-prev,
+.week .ui-datepicker-next,
+.month .ui-datepicker-prev,
+.month .ui-datepicker-next {
+	position: relative;
+}
+
+table.ser-weekpicker {
+	width: 100%;
+	text-align: center;
+}
+
+
+.ui-datepicker-prev:hover,
+.ui-datepicker-next:hover {
+	background-color: #f0f0f0;
+}
+.ui-datepicker-prev > span,
+.ui-datepicker-next > span {
+	display: none;
+}
+
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 26px;
+	line-height: 1.8em;
+	text-align: center;
+	color: #95172c;
+}
+.ui-datepicker-calendar {
+	border-spacing: 0;
+}
+.ui-datepicker-calendar > thead > tr > th,
+.week .title {
+	border-top: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+	color: #cccccc;
+	font-weight: normal;
+	padding: .35em .4em;
+}
+.week .title {
+	display: block;
+	text-align: center;
+	margin-bottom: 3px;
+}
+.ui-datepicker-calendar > tbody > tr > td {
+	font-weight: normal;
+}
+.ui-datepicker-calendar > tbody > tr > td > a {
+	display: block;
+	padding: .15em .2em .15em .15em;
+	margin: .1em;
+	text-align: center;
+	text-decoration: none;
+	color: #404040;
+	border-radius: 3px;
+	cursor: default;
+}
+.ui-datepicker-calendar > tbody > tr > td:hover > a {
+	background-color: #e1b0b8;
+	color: white;
+}
+.ui-datepicker-calendar > tbody > tr > td > a.ui-state-active {
+	background-color: #95172c;
+	color: white;
+}
+
+.months_container {
+	width: 24em;
+}
+.month .elem_mois {
+	display: inline-block;
+	width: 7em;
+	text-align: center;
+	border-radius: 3px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	cursor: default;
+	border: solid 1px #f0f0f0;
+}
+
+.year_selector {
+	display: inline-block;
+	padding-top: 15px;
+	width: 24em;
+}
+.year_selector .elem_year {
+	display: inline-block;
+	width: 4em;
+	text-align: center;
+	border-radius: 3px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	cursor: default;
+	border: solid 1px #f0f0f0;
+}
+
+.btn-week {
+	display: block;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	cursor: default;
+	color: #404040;
+	border-radius: 3px;
+}
+
+.btn-week:hover {
+	background-color: #e1b0b8;
+	color: white;
+}
+.btn-week.ui-state-active {
+	background-color: #95172c;
+	color: white;
+}
+
+.month .elem_mois.ui-state-highlight {
+	border: solid 1px #f1dee1;
+}
+.month .elem_mois:hover {
+	background-color: #e1b0b8;
+	color: white;
+	border: solid 1px #e1b0b8;
+}
+.month .elem_mois.ui-state-active {
+	background-color: #95172c;
+	color: white;
+	border: solid 1px #95172c;
+}
+
+.years_container .elem_year.ui-state-highlight {
+	border: solid 1px #f1dee1;
+}
+.years_container .elem_year:hover {
+	background-color: #e1b0b8;
+	color: white;
+	border: solid 1px #e1b0b8;
+}
+.years_container .elem_year.ui-state-active {
+	background-color: #95172c;
+	color: white;
+	border: solid 1px #95172c;
+}
+
+
+
+.periode_from,
+.periode_to {
+	position: relative;
+	background-color: #F5F9FB;
+	border: solid 1px #95172c;
+}
+.periode_to {
+	margin-left: 25px;
+}
+
+.periode_uncheck {
+	background-color: #e6e6e6;
+	border: solid 1px #e6e6e6;
+}
+
+
+.sel_checkbox::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/charte/valid_check.png) 3px center no-repeat #95172c;
+}
+.sel_checkbox.uncheck::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/charte/valid_check.png) 3px center no-repeat #e6e6e6;
+	border:1px solid white;
+}
+
+.date_widget_content .day_date_picker,
+.week_selector,
+.month_selector {
+	display: inline-block;
+	position: relative;
+	vertical-align: center;
+	margin-right: 30px;
+}
+.week_selector,
+.month_selector {
+	margin-right: 20px;
+}
+.date_widget_content .day_shortcuts,
+.date_widget_content .week_shortcuts,
+.date_widget_content .month_shortcuts,
+.date_widget_content .year_shortcuts {
+	display: inline-block;
+	position: relative;
+	vertical-align: bottom;
+}
+.date_widget_content .day_shortcuts > ul,
+.date_widget_content .week_shortcuts > ul,
+.date_widget_content .month_shortcuts > ul,
+.date_widget_content .year_shortcuts > ul {
+	display: block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.date_widget_content .day_shortcuts > ul > li,
+.date_widget_content .week_shortcuts > ul > li,
+.date_widget_content .month_shortcuts > ul > li,
+.date_widget_content .year_shortcuts > ul > li {
+	display: block;
+	width: 80px;
+	padding: 7px 10px;
+	margin-top: 7px;
+	background-color: #eaeaea;
+	border-radius: 3px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.shortcuts_table th {
+	font-weight: normal;
+	color: #cccccc;
+}
+.shortcuts_table tbody th {
+	text-align: left;
+	padding-right: 10px;
+}
+.shortcuts_table td.sh_c {
+	width: 80px;
+	padding: 7px 10px;
+	margin-top: 7px;
+	background-color: #eaeaea;
+	border-radius: 3px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.delai_widget.short {
+	text-decoration: none;
+}
+.delai_widget.short > .button {
+	min-width: 35px;
+}
+
+
+
+.widget.disabled > .button {
+	border: none;
+	padding-left: 2px;
+	padding-right: 2px;
+	min-width: 0;
+	padding-top: 0;
+	padding-bottom: 2px;
+	line-height: inherit;
+}
+.widget.thin.disabled > .button {
+	line-height: inherit;
+}
+.widget.disabled > .button::after {
+	display: none;
+}
+.widget.disabled > .button:active {
+	color: inherit;
+}

@@ -1,0 +1,60 @@
+{% set full_open = true %}
+{% set show_special_values = true %}
+
+<span class="nav_widget">saveReport</span>
+
+
+<div class="save_report_form_container">
+  <div class="title">Nom du reporting</div>
+  <span class="report hidden">{{ report }}</span>
+  <span class="type hidden">{{ type }}</span>
+
+  <div class="cnt">
+  <br/>
+  {{ form(form) }}
+  <div class="list_reportings">
+  <ul>
+  {% for rs in list_reportings %}
+    <li>{{ rs.nom }}</li>
+   {% endfor %}
+  </ul>
+  </div>
+  </div>
+</div>
+
+<div class="save_report_widgets_container">
+<div class="title">Filtres</div>
+<div class="cnt">
+{% if type == 'article' %}
+{% include "ZombieBundle:Recherche:article_search_ul.html.twig" %}
+{% endif %}
+</div>
+</div>
+
+<div class="save_report_row_col_container">
+<div class="title">Lignes / Colonnes</div>
+<div class="cnt">
+{{ report_col_row(type) }}
+</div>
+</div>
+
+<div class="save_report_datas_container">
+<div class="title">Donn&eacute;es affich&eacute;es</div>
+<div class="cnt">
+{{ report_datas_widget(type, 'datas', 'qte', { 'multi': 1, 'has_resume': 1, 'title': 'Choix des données affichées', 'fixed_title': 1 }) }}
+</div>
+</div>
+
+
+<div class="save_report_widgets_editable_container">
+<div class="title">Filtres Editables</div>
+<div class="cnt">
+<ul>
+</ul>
+</div>
+</div>
+
+
+<div class="save_search_buttons">
+<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer le reporting</span></span>
+</span></span></div>

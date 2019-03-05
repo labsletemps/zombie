@@ -1,0 +1,7 @@
+<ul class="success">
+{% for datas in results %}
+{% set entite = datas['entite'] %}
+{% set individu = datas['individu'] %}
+  <li individu_id="{{ individu.id }}" entite_id="{{ entite.id }}" entite_name="{{ entite.nom }}"><span><span class="head_title" code="{{ individu.id }}" sort_type="text" title="{{ individu.nomComplet }}">{{ individu.nomComplet }}</span><span class="add">Ajouter</span><span class="remove">Supprimer</span></span></li>
+{% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+
+parameters:
+    dandelion:
+        Token: 9249b746af93444294930af282cd94d6
+
+    zombie.modules.dandelion:
+        service: seriel_dandelion.manager
+        StateSemantique: seriel_dandelion.manager

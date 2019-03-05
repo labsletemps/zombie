@@ -1,0 +1,22 @@
+<div class="dram_container">
+<table class="designed2">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Measure</th>
+      <th>Average</th>
+      <th>Indicator (0 to 100)</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for site,vals in values %}
+    <tr>
+      <th>{{ site }}</th>
+      <td>{{ vals.measure }}</td>
+      <td>{{ vals.average }}</td>
+      <td>{{ vals.indicator }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>

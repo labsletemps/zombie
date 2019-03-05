@@ -1,0 +1,66 @@
+
+{% set uid = uid('crea_gestionnaire') %}
+
+<span class="nav_widget">crea_gestionnaire</span>
+{% if id is defined %}
+	<span class="select_id" style="display:none">{{ id }}</span>
+{% endif %}
+<div class="edit_gestionnaire_infos">
+<div>
+<div class="title">Informations</div>
+<div class="cnt">
+{{ form(form) }}
+</div>
+</div>
+</div>
+
+
+<div class="edit_gestionnaire_connexion">
+<div>
+<div class="title">Connexion au logiciel</div>
+<div class="cnt">
+
+<div id="form">
+
+<div>
+  <label for="login_{{ uid }}">Identifiant</label>
+  <input type="text" name="login" id="login_{{ uid }}" 
+  {% if user is defined %} 
+  		value="{{ user.username }}"
+  {% else %} value=""
+  {% endif %}/>
+</div>
+
+{% set empty_pass = 'm01_2_pa553__user' %}
+<div>
+  <label for="pwd_{{ uid }}">Mot de passe</label>
+  <input type="password" name="pwd" id="pwd_{{ uid }}" {% if user is defined %} value="{{ empty_pass }}"{% else %} value=""{% endif %}/>
+</div>
+<div>
+    <label for="profil">Profil : </label>
+    <select name='profil'>
+       <option value=""></option>
+      {% for profil in profils %}
+           <option value="{{ profil.id }}"{% if curr_profil_id is not null and curr_profil_id == profil.id %} selected="selected"{% endif %}>{{ profil.nom }}</option>
+       {% endfor %}
+    </select>
+</div>
+<div>
+	<label for="actif">Actif : </label>
+	<select name='actif'>
+		<option value=0 {% if actif is defined and actif ==0 %}selected{% endif %}>Non</option>
+		<option value=1 {% if actif is defined and actif ==1 %} selected{% endif %}>Oui</option>
+	</select>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="edit_gestionnaire_buttons">
+	<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer</span></span>
+</div>

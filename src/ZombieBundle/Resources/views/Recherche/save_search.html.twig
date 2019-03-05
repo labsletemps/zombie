@@ -1,0 +1,51 @@
+{% set full_open = true %}
+{% set show_special_values = true %}
+{% set uid = uid('save_seach') %}
+
+<span class="nav_widget">saveSearch</span>
+
+
+<div class="save_search_form_container">
+  <div class="title">Nom de la recherche</div>
+  <span class="search hidden">{{ search }}</span>
+  <span class="type hidden">{{ type }}</span>
+
+  <div class="cnt">
+  <br/>
+  {{ form(form) }}
+  <div class="list_recherches">
+  <ul>
+  {% for rs in list_recherches %}
+    <li>{{ rs.nom }}</li>
+   {% endfor %}
+  </ul>
+  </div>
+  </div>
+</div>
+
+<div class="save_search_cols_container">
+  <div class="title">Affichage des colonnes</div>
+  <div class="cnt">
+    {% set hasColumns = colonnes is defined and colonnes is not empty and colonnes is not null %}
+    {% if hasColumns %}<span class="colonnes hidden">{{ colonnes }}</span>{% endif %}
+    <ul>
+      <li{% if hasColumns == false %} class="disabled"{% endif %}><input type="radio" id="aff_col_1_{{ uid }}" name="aff_col" value="1" {% if hasColumns %}checked="checked"{% else %}disabled="disabled"{% endif %} /><label for="aff_col_1_{{ uid }}"> Afficher les colonnes actuelles</label></li>
+      <li><input type="radio" id="aff_col_2_{{ uid }}"name="aff_col" value="2"/><label for="aff_col_2_{{ uid }}"> S&eacute;lectionner parmi la liste &nbsp; <select style="min-width: 100px" /></label></li>
+      <li><input type="radio" id="aff_col_3_{{ uid }}"name="aff_col" value="3"{% if hasColumns == false %} checked="checked"{% endif %}/><label for="aff_col_3_{{ uid }}"> Ne pas lier d'affichage &agrave; la recherche</label></li>
+    </ul>
+  </div>
+</div>
+
+<div class="save_search_widgets_container">
+<div class="title">Filtres</div>
+    <div class="cnt">
+    {% if type == 'article' %}
+        {% include "ZombieBundle:Recherche:article_search_ul.html.twig" %}
+    {% endif %}
+    </div>
+</div>
+
+
+<div class="save_search_buttons">
+<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer la recherche</span></span>
+</span></span></div>

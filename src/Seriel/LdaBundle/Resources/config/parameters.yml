@@ -1,0 +1,3 @@
+parameters:
+    zombie.modules.lda:
+        service: seriel_lda.manager

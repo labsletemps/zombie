@@ -1,0 +1,50 @@
+{# src/Seriel/ZombieBundle/Resources/views/Reporting/reporting.html.twig #}
+
+{% set uid = uid('reporting') %}
+
+<span class="nav_widget">reportingNav</span>
+
+
+<div class="menu_left menu_reporting ui-layout-west" layout-size="243">
+  <div class="reporting_first_step">
+    <div class="title"><span class="num">1.</span> FILTRES</div>
+    <div id="reporting_accordion_container">
+        <div id="reporting_accordion">
+            <h3 type="article">Articles</h3>
+            <div class="scrollable article" type="article">
+                {% include "ZombieBundle:Recherche:article_search_ul.html.twig" %}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="cont ui-layout-center">
+    <div class="reporting_container rc_article">
+      <div class="options">
+        <div class="reporting_second_step">
+          <div class="title"><span class="num">2.</span> LIGNES / COLONNES</div>
+          <div class="cnt">
+            {{ report_col_row('article') }}
+          </div>
+        </div>
+        <div class="reporting_third_step">
+          <div class="title"><span class="num">3.</span> DONN&Eacute;ES AFFICH&Eacute;ES</div>
+          <div class="cnt">
+            {{ report_datas_widget('article', 'datas', 'qte', { 'multi': 1, 'has_resume': 1, 'title': 'Choix des données affichées', 'fixed_title': 1 }) }}
+          </div>
+        </div>
+      </div>
+      
+      <div class="reporting_fourth_step">
+          <div class="title"><span class="num">4.</span> <span class="reporting_button"></span><span class="right_buttons"><span class="action report_save">Enregistrer</span><span class="action report_load">Charger</span><span class="action report_config">G&eacute;rer</span><span class="action report_export">Exporter</span></span></div>
+          <div class="cnt">
+          
+          </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="menu_right ui-layout-east" layout-size="44"></div>

@@ -1,0 +1,85 @@
+
+{% set today = 'now'|date('Y-m-d') %}
+{% set day1_class =  days[0] | date('Y-m-d') == today ? ' today' : '' %}
+{% set day2_class =  days[1] | date('Y-m-d') == today ? ' today' : '' %}
+{% set day3_class =  days[2] | date('Y-m-d') == today ? ' today' : '' %}
+{% set day4_class =  days[3] | date('Y-m-d') == today ? ' today' : '' %}
+{% set day5_class =  days[4] | date('Y-m-d') == today ? ' today' : '' %}
+{% set day6_class =  days[5] | date('Y-m-d') == today ? ' today' : '' %}
+{% set day7_class =  days[6] | date('Y-m-d') == today ? ' today' : '' %}
+
+
+    <div class="planning_head">
+      <span class="date_filter_value hidden">{{ date }}</span>
+      <div class="actions_head_container"><span class="right_buttons"><span class="action planning_export">Exporter</span></span></div>
+      <div class="days_head_container">
+        <table class="days_head">
+          <tbody>
+            <tr>
+              <td class="day1{{ day1_class }}">{{ days[0] | date('d.m.Y') }}</td>
+              <td class="day2{{ day2_class }}">{{ days[1] | date('d.m.Y') }}</td>
+              <td class="day3{{ day3_class }}">{{ days[2] | date('d.m.Y') }}</td>
+              <td class="day4{{ day4_class }}">{{ days[3] | date('d.m.Y') }}</td>
+              <td class="day5{{ day5_class }}">{{ days[4] | date('d.m.Y') }}</td>
+              <td class="day6{{ day6_class }}">{{ days[5] | date('d.m.Y') }}</td>
+              <td class="day7{{ day7_class }}">{{ days[6] | date('d.m.Y') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="planning_datas scrollable">
+      <table class="days">
+        <tbody>
+          <tr>
+            <td class="day1{{ day1_class }}" day="1">
+            {% for event in eventsByDay[days[0]] %}
+            {{ evt_agenda(event) }}
+            {% endfor %}
+            </td>
+            <td class="day2{{ day2_class }}" day="2">
+            
+			{% for event in eventsByDay[days[1]] %}
+			{{ evt_agenda(event) }}
+            {% endfor %}
+            
+            </td>
+            <td class="day3{{ day3_class }}" day="3">
+            
+            {% for event in eventsByDay[days[2]] %}
+			{{ evt_agenda(event) }}
+            {% endfor %}
+            
+            </td>
+            <td class="day4{{ day4_class }}" day="4">
+            
+            {% for event in eventsByDay[days[3]] %}
+			{{ evt_agenda(event) }}
+            {% endfor %}
+            
+            </td>
+            <td class="day5{{ day5_class }}" day="5">
+            
+            {% for event in eventsByDay[days[4]] %}
+			{{ evt_agenda(event) }}
+            {% endfor %}
+            
+            </td>
+            <td class="day6{{ day6_class }}" day="6">
+            
+            {% for event in eventsByDay[days[5]] %}
+			{{ evt_agenda(event) }}
+            {% endfor %}
+            
+            </td>
+            <td class="day7{{ day7_class }}" day="7">
+            
+            {% for event in eventsByDay[days[6]] %}
+			{{ evt_agenda(event) }}
+            {% endfor %}
+            
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

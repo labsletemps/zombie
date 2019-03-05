@@ -1,0 +1,10 @@
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+#fos_user_all:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+zombie:
+    resource: "@ZombieBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,123 @@
+.tuile {
+	margin-bottom: 30px;
+	overflow: hidden;
+	background: white;
+}
+.tuile > * {
+	overflow: hidden;
+}
+
+.tuile {
+	border: solid 1px #cccccc;
+	background-color: white;
+}
+.tuile .head {
+	background-color: #eaeaea;
+}
+.tuile .head > h2 {
+	margin: 0;
+	padding: 5px 10px;
+	display: inline-block;
+	font-size: 1.35em;
+}
+.tuile .head > h2 > .type {
+	display: none;
+}
+.tuile .head > .cli_date {
+	padding-top: 6px;
+	padding-right: 10px;
+	font-size: 1.15em;
+	float: right;
+}
+.tuile .head > .cli_date > .separator {
+	display: inline-block;
+	position: relative;
+	top: -1px;
+	width: 1px;
+	height: 18px;
+	background-color: #555555;
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.tuile .cnt {
+	padding: 15px;
+}
+
+.tuile_demande .cnt .di_informations_infos_1,
+.tuile_demande .cnt .dd_informations_infos_1 {
+	display: inline-block;
+	width: 45%;
+	padding: 0;
+	padding-right: 5%;
+	vertical-align: top;
+}
+
+.tuile_demande .cnt .di_informations_infos_2,
+.tuile_demande .cnt .dd_informations_infos_2 {
+	display: inline-block;
+	padding: 0;
+	width: 50%;
+	vertical-align: top;
+}
+
+.tuile_demande .cnt .di_informations_infos_2 a.link,
+.tuile_demande .cnt .dd_informations_infos_2 a.link {
+	display: none;
+}
+
+.tuile_demande .num,
+.tuile_demande .provenance,
+.tuile_demande .emetteur,
+.tuile_demande .date_emission,
+.tuile_demande .heure_emission,
+.tuile_demande .validateur,
+.tuile_demande .date_validation,
+.tuile_demande .heure_validation,
+.tuile_demande .utilisateur,
+
+.tuile_demande .metier,
+.tuile_demande .activite,
+.tuile_demande .urgence,
+.tuile_demande .materiel,
+.tuile_demande .categorie,
+.tuile_demande .infos_compl,
+.tuile_demande .nom,
+.tuile_demande .type,
+.tuile_demande .activite,
+.tuile_demande .adresse,
+.tuile_demande .tel,
+.tuile_demande .fax,
+.tuile_demande .email,
+.tuile_demande .div,
+.tuile_demande .date_ouverture,
+.tuile_demande .poste
+{
+	font-weight: bold;
+}
+
+.tuile .cnt .separator {
+	display: block;
+	height: 1px;
+	background-color: #cccccc;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.tuile .texte_demande {
+	color: #cccccc;
+	padding-left: 30px;
+	background: url(../../images/charte/demande_grey.png) left top no-repeat;
+	min-height: 20px;
+}
+
+.tuile_contrat {
+	padding: 10px;
+	margin-bottom: 15px;
+}
+.tuile_contrat > span {
+	display: block;
+}
+.tuile_contrat > .title {
+	font-weight: bold;
+}

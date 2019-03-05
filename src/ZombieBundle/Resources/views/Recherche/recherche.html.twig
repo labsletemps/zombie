@@ -1,0 +1,44 @@
+{% set uid = uid('search') %}
+
+<span class="nav_widget">rechercheNav</span>
+
+
+<div class="menu_left menu_rech ui-layout-west" layout-size="244">
+
+    <div id="search_accordion_container">
+        <div id="search_accordion">
+          {% if is_granted('nav_recherche_article') %}
+
+            <h3 type="article">Articles</h3>
+            <div class="scrollable" type="article">
+                {% include "ZombieBundle:Recherche:article_search_ul.html.twig" %}
+                <span class="search_button" rel="article"></span>
+                <span class="context_menu_widget" rel="article">
+                  <span class="button"></span>
+                  <span class="content">
+                    <ul>
+                      <li class="context-menu-item icon icon-save" action="save"><span>Enregistrer la recherche</span></li>
+                      <li class="context-menu-item icon icon-load" action="load"><span>Charger une recherche</span></li>
+                      <li class="context-menu-item icon icon-config" action="config"><span>G&eacute;rer mes recherches</span></li>
+                    </ul>
+                  </span>
+                </span>
+            </div>
+            
+          {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+<div class="cont ui-layout-center">
+    <div class="search_list_container">
+        {% if not results is defined %}
+            {% set results=null %}
+        {% endif %}
+        {% include "SerielAppliToolboxBundle:Liste:liste.html.twig" %}  
+    </div>
+</div>
+
+<div class="menu_right ui-layout-east" layout-size="44"></div>

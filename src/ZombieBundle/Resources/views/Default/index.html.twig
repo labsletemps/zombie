@@ -1,0 +1,51 @@
+{# src/ZombieBundle/Resources/views/Default/index.html.twig #}
+{% extends 'ZombieBundle::layout.html.twig' %}
+
+{% block title %}Zombie - Le Temps{% endblock %}
+
+{% block body %}
+{% if hash is defined %}<span class="hash">{{ hash }}</span>{% endif %}
+<div class="tools hidden"></div>
+<div id="main_container" class="ui-layout-center">
+<div id="main_block">
+</div>
+<div id="dock_block">
+</div>
+</div>
+<div id="south_menu" class="ui-layout-south">
+<div><div id="dock_left_button"></div><div id="dock_div"><div><ul id="dock_ul"></ul></div></div><div id="dock_right_button"></div></div>
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+
+$(document).ready(function() {
+	var southHeight = $('#south_menu').height();
+	
+	$('#main_container').parent().serielLayout({
+		defaults: {
+			spacing_open: 0,
+			spacing_closed: 0
+		},
+		south: {
+			size: southHeight
+		}
+	});
+	
+
+	nav();
+	
+	var currHash = getCleanHash();
+	if (!currHash) {
+		var hash = 'accueil';
+		var hashElem = $('#content > .hash');
+		if (hashElem && hashElem.size() == 1) {
+			var hash = hashElem.html();
+			hashElem.remove();
+		}
+		nav().goTo(hash);
+	}
+});
+{% endblock %}

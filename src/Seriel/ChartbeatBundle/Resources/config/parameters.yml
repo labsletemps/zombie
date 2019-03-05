@@ -1,0 +1,8 @@
+
+parameters:
+    zombie.modules.chartbeat:
+        service: seriel_chartbeat.manager
+        metrics_object_class: Seriel\ChartbeatBundle\Entity\ChartbeatArticleMetrics
+        StateMetrics: seriel_chartbeat.manager
+    zombie.moduleswidget.chartbeatarticledayreport:
+        service_list: seriel_chartbeat.cbadr_manager

@@ -1,0 +1,19 @@
+services:
+    security.access.google_analytics_article_metrics_voter:
+        class:      Seriel\GoogleAnalyticsBundle\Securite\Voters\GoogleAnalyticsArticleMetricsVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+    seriel_google_analytics.manager:
+        class: Seriel\GoogleAnalyticsBundle\Managers\GoogleAnalyticsManager
+        arguments: ["@service_container", "@logger", "%google.analytics.filekey%", "%google.analytics.idview%"]
+    seriel_google_analytics.article_metrics_manager:
+        class: Seriel\GoogleAnalyticsBundle\Managers\GoogleAnalyticsArticleMetricsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_google_analytics.day_report_manager:
+        class: Seriel\GoogleAnalyticsBundle\Managers\GoogleAnalyticsDayReportManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_google_analytics.day_report_entrance_manager:
+        class: Seriel\GoogleAnalyticsBundle\Managers\DayReportEntranceManager
+        arguments: ["@doctrine", "@logger", "@service_container"]

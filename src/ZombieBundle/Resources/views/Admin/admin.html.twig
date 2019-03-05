@@ -1,0 +1,50 @@
+{# src/ZombieBundle/Resources/views/Admin/admin.html.twig #}
+{% set uid = uid('admin') %}
+
+<span class="nav_widget">adminNav</span>
+
+<div class="menu_left menu_admin ui-layout-west" layout-size="244">
+	<div id="admin_accordion_container">
+        <div id="admin_accordion">
+        
+            <h3 class="societe">Le temps</h3>
+            <div class="scrollable">
+            	<ul>
+            		{% if is_granted('nav_admin_info') %}
+                	    <li>
+                			<span class="widget">
+                				<span class="button" onclick="document.location.href='#admin/societe/informations'">Informations</span>
+                			</span>
+                		</li>
+            		{% endif %}
+            		{% if is_granted('nav_admin_users') %}
+            		<li>
+            			<span class="widget">
+            				<span class="button" onclick="document.location.href='#admin/societe/utilisateurs'">Utilisateurs</span>
+            			</span>
+            		</li>
+            		{% endif %}
+            		{% if is_granted('nav_admin_profils') %}
+            		<li>
+            			<span class="widget">
+            				<span class="button" onclick="document.location.href='#admin/societe/profils'">Profils</span>
+            			</span>
+            		</li>
+            		{% endif %}
+            		{% if is_granted('nav_admin_donnees') %}
+            		<li>
+            			<span class="widget">
+            				<span class="button" onclick="document.location.href='#admin/societe/donnees'">Donnees</span>
+            			</span>
+            		</li>
+            		{% endif %}
+            	</ul>
+            </div>
+       </div>
+   </div>
+</div>
+     
+     
+<div class="admin_container ui-layout-center">
+
+</div>

@@ -1,0 +1,20 @@
+
+<span class="nav_widget">gestionnaireNav</span>
+
+<div class="admin_list_container">
+<div class="gestionnaires_head actions ui-layout-north" layout-size="34">
+<ul>
+  <li>
+    <span>Cr&eacute;ation</span>
+  	<ul>
+  	  <li class="action" action="ajouter_gestionnaire"><span>Cr&eacute;er un nouvel utilisateur</span></li>
+  	</ul>
+  </li>
+</ul>
+</div>
+
+<div class="liste_container ui-layout-center">
+	{{ liste(individus, null, 'ZombieBundle\\Entity\\Individu\\Utilisateur', { 'static': true }) }}
+
+</div>
+</div>

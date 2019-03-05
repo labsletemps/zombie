@@ -1,0 +1,46 @@
+
+<span class="nav_widget">loadReport</span>
+
+<div class="save_search_container">
+<div class="menu_left">
+<ul>
+
+      {% set qte_article = article_perso|length + article_fourni|length %}
+      <li type="article"{% if type == 'article' %} class="selected"{% endif %}>
+        <span class="title">Articles</span>
+        <span class="desc">{{ qte_article }} reporting{{ qte_article > 1 ? 's':'' }}</span>
+      </li>
+
+</ul>
+</div>
+<div class="content">
+
+      <div class="cnt{% if type == 'article' %} visible{% endif %}" type="article">
+        <div class="perso">
+        <div class="title">Mes reportings</div>
+        <div class="cont">
+        <ul>
+        {% for rs in article_perso %}
+          <li rs_id="{{ rs.id }}" rs_type="{{ rs.type }}"><span>{{ rs.nom }}<span class="report hidden">{{ rs.chaineReporting }}</span></span></li>
+        {% endfor %}
+        </ul>
+        </div>
+        </div>
+        <div class="shared">
+        <div class="title">Reportings fournies</div>
+        <div class="cont">
+        <ul>
+        {% for rs in article_fourni %}
+          <li rs_id="{{ rs.id }}" rs_type="{{ rs.type }}"><span>{{ rs.nom }}<span class="report hidden">{{ rs.chaineReporting }}</span></span></li>
+        {% endfor %}
+        </ul>
+        </div>
+        </div>
+      </div>
+
+</div>
+
+<div class="save_search_buttons">
+<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Charger le reporting</span></span>
+</span></span></div>
+</div>

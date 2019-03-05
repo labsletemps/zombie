@@ -1,0 +1,45 @@
+
+.dandelion_semantics_container {
+	position: relative;
+	margin: 20px 45px 20px 45px;
+}
+.dandelion_semantics_container .block {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: solid 1px #cccccc;
+}
+.dandelion_semantics_container .title_semantic {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+    padding: 7px 0;
+}
+.dandelion_semantics_container .compteur span {
+	text-align: center;
+	padding: 15px;
+}
+.EntitySemanticPerson {
+	color: white;
+	background-color: #dc5235;
+}
+.EntitySemanticWork {
+	color: white;
+	background-color: #91205f;
+}
+.EntitySemanticOrganisation {
+	color: white;
+	background-color: #eba136;
+}
+.EntitySemanticPlace {
+	color: white;
+	background-color: #0071a1;
+}
+.EntitySemanticEvent {
+	color: white;
+	background-color: #7c4516;
+}
+.EntitySemanticConcept {
+	color: white;
+	background-color: #aecf42;
+}

@@ -1,0 +1,42 @@
+.day_report_container {
+	position: relative;
+	display: inline-block;
+	width: 50%;
+	height: 400px;
+}
+
+.day_report_container .list_content {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+	right: 15px;
+	bottom: 0;
+	border: solid 1px #cccccc;
+}
+
+.day_report_chart_container {
+	position: relative;
+	display: inline-block;
+	width: 50%;
+	height: 400px;
+}
+
+.day_report_chart_container .chart_content {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+	right: 15px;
+	bottom: 0;
+	border: solid 1px #cccccc;
+	background-color: #f8f8f8;
+}
+.day_report_chart_container .chart_content:nth-child(odd) {
+	left: 15px;
+	right: 35px;
+}
+
+.day_report_chart_container .chart_content > svg text {
+	font-weight: normal;
+	font-size: 1em;
+	font-familly: Verdana, Arial, Sans-Serif;
+}

@@ -1,0 +1,222 @@
+
+### ACCUEIL
+
+zombie_homepage:
+    path:     /
+    defaults: { _controller: ZombieBundle:Default:index}
+
+zombie_accueil:
+    path:     /accueil
+    defaults: { _controller: ZombieBundle:Accueil:index }
+
+### RECHERCHE
+
+zombie_rechercher:
+    path:     /rechercher
+    defaults: { _controller: ZombieBundle:Recherche:index }
+
+zombie_recherche_search_article:
+    path:     /recherche/ajax_search_article
+    defaults: { _controller: ZombieBundle:Recherche:searchArticle }
+
+zombie_recherche_json_search_article:
+    path:     /api/{parameters}
+    defaults: { _controller: ZombieBundle:Recherche:searchArticleJson, parameters: '' }
+        
+zombie_recherche_save:
+    path:     /recherche/save/{type}
+    defaults: { _controller: ZombieBundle:Recherche:save }
+
+zombie_recherche_load:
+    path:     /recherche/load/{type}
+    defaults: { _controller: ZombieBundle:Recherche:load }
+
+zombie_recherche_config:
+    path:     /recherche/config/{type}
+    defaults: { _controller: ZombieBundle:Recherche:config }
+    
+zombie_recherche_delete:
+    path:     /recherche/delete/{rs_id}
+    defaults: { _controller: ZombieBundle:Recherche:delete }
+
+zombie_recherche_delete_shared:
+    path:     /recherche/delete_shared/{rs_id}
+    defaults: { _controller: ZombieBundle:Recherche:deleteShared }
+
+zombie_recherche_search_indiv:
+    path:     /recherche/search_indiv/{type}
+    defaults: { _controller: ZombieBundle:Recherche:searchIndiv }
+
+zombie_recherche_share:
+    path:     /recherche/share/{rs_id}
+    defaults: { _controller: ZombieBundle:Recherche:share }
+
+### LISTES
+
+zombie_liste_settings:
+    path:     /liste/settings
+    defaults: { _controller: ZombieBundle:ZombieListe:settings }
+
+zombie_liste_save_settings:
+    path:     /liste/save_settings
+    defaults: { _controller: ZombieBundle:ZombieListe:saveSettings }
+
+zombie_liste_refresh:
+    path:     /liste/refresh
+    defaults: { _controller: ZombieBundle:ZombieListe:refresh }
+
+zombie_liste_dynamic_load:
+    path:     /liste/refresh/{page}
+    defaults: { _controller: ZombieBundle:ZombieListe:dynamicLoad }
+
+zombie_liste_refresh_elems:
+    path:     /liste/refresh_elems
+    defaults: { _controller: ZombieBundle:ZombieListe:refreshElems }
+
+zombie_liste_from_ids:
+    path:     /liste/fromIds
+    defaults: { _controller: ZombieBundle:ZombieListe:fromIds }
+
+zombie_liste_export:
+    path:     /liste/export
+    defaults: { _controller: ZombieBundle:ZombieListe:export }
+
+zombie_liste_live_modif:
+    path:     /liste/live_modif
+    defaults: { _controller: ZombieBundle:ZombieListe:liveModif }
+
+
+
+### ARTICLE
+
+zombie_article_tmp_link:
+    path:     /op/article/{code}
+    defaults: { _controller: ZombieBundle:Article:tmpArticleLink }
+
+zombie_article:
+    path:     /article/{id}
+    defaults: { _controller: ZombieBundle:Article:index }
+
+zombie_article_infos:
+    path:     /article/infos/{id}
+    defaults: { _controller: ZombieBundle:Article:infos }
+
+zombie_article_historique:
+    path:     /article/historique/{id}
+    defaults: { _controller: ZombieBundle:Article:historique }
+
+zombie_article_historique_resume:
+    path:     /article/historique/resume/{id}
+#    defaults: { _controller: ZombieBundle:Article:historiqueResume }
+    defaults: { _controller: ZombieBundle:Default:workInProgress }
+
+zombie_article_historique_modele:
+    path:     /article/historique/{modele}/{id}
+    defaults: { _controller: ZombieBundle:Article:historiqueModele }
+
+zombie_article_semantique:
+    path:     /article/semantique/{id}
+    defaults: { _controller: ZombieBundle:Article:semantique }
+
+zombie_article_semantique_module:
+    path:     /article/semantique/{module}/{id}
+    defaults: { _controller: ZombieBundle:Article:semantiqueModule }
+    
+zombie_article_semantique_resume:
+    path:     /article/semantique/resume/{id}
+#    defaults: { _controller: ZombieBundle:Article:semantiqueResume }
+    defaults: { _controller: ZombieBundle:Default:workInProgress }
+
+### STATISTIQUES
+zombie_reporting:
+    path:     /reporting
+    defaults: { _controller: ZombieBundle:Reporting:index }
+
+zombie_reporting_render:
+    path:     /reporting/{type}/render
+    defaults: { _controller: ZombieBundle:Reporting:render }
+
+zombie_reporting_config:
+    path:     /reporting/config/{type}
+    defaults: { _controller: ZombieBundle:Reporting:config }
+    
+zombie_reporting_load:
+    path:     /reporting/load/{type}
+    defaults: { _controller: ZombieBundle:Reporting:load }
+    
+zombie_reporting_save:
+    path:     /reporting/save/{type}
+    defaults: { _controller: ZombieBundle:Reporting:save }
+    
+zombie_reporting_delete:
+    path:     /reporting/delete/{rs_id}
+    defaults: { _controller: ZombieBundle:Reporting:delete }
+    
+zombie_reporting_delete_shared:
+    path:     /reporting/delete_shared/{rs_id}
+    defaults: { _controller: ZombieBundle:Reporting:deleteShared }
+
+zombie_reporting_share:
+    path:     /reporting/share/{rs_id}
+    defaults: { _controller: ZombieBundle:Reporting:share }
+    
+zombie_reporting_search_indiv:
+    path:     /reporting/search_indiv/{type}
+    defaults: { _controller: ZombieBundle:Reporting:searchIndiv }
+
+zombie_reporting_export:
+    path:     /reporting/export
+    defaults: { _controller: ZombieBundle:Reporting:export }
+
+### PLANNING
+
+zombie_planning:
+    path:     /planning
+    defaults: { _controller: ZombieBundle:Planning:index }
+    
+zombie_planning_ajax:
+    path:     /planning/{type}/{date}
+    defaults: { _controller: ZombieBundle:Planning:ajaxLoad }
+
+
+### ADMIN
+
+zombie_admin:
+    path:     /admin
+    defaults: { _controller: ZombieBundle:Admin:index }
+    
+zombie_admin_societe_informations:
+    path:     /admin/societe/informations
+    defaults: { _controller: ZombieBundle:Admin:societeInformations }
+  
+zombie_admin_societe_intervenants:
+    path:     /admin/societe/utilisateurs
+    defaults: { _controller: ZombieBundle:Admin:societeIntervenants }
+  
+zombie_admin_edit_intervenants:
+    path:     /admin/societe/utilisateurs/edit/{id}
+    defaults: { _controller: ZombieBundle:Admin:editIntervenants, id: null }  
+ 
+zombie_admin_edited_intervenants:
+    path:     /admin/societe/utilisateurs/edited/{id}
+    defaults: { _controller: ZombieBundle:Admin:editedIntervenants, id: null }
+
+zombie_admin_societe_profils:
+    path:     /admin/societe/profils
+    defaults: { _controller: ZombieBundle:Admin:societeProfilsListe }
+    
+zombie_admin_societe_profils_nouveau:
+    path:     /admin/societe/profils/nouveau
+    defaults: { _controller: ZombieBundle:Admin:societeProfilsNew }
+    
+zombie_admin_code_societe_profils_edit:
+    path:     /admin/societe/profils/edit/{profilId}
+    defaults: { _controller: ZombieBundle:Admin:societeProfilsEdit }
+
+zombie_admin_profils_accueil:
+    path:     /admin/profils/accueil/{profilId}
+    defaults: { _controller: ZombieBundle:Admin:profilsAccueil }
+
+zombie_admin_etat_donnee:
+    path:     /admin/societe/donnees
+    defaults: { _controller: ZombieBundle:Admin:etatDonnees }

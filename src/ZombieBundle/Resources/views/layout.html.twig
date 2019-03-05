@@ -1,0 +1,317 @@
+{% set disable_network = false %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>{% block title %}Zombie - Le Temps{% endblock %}</title>
+  <link rel="icon" type="image/png" href="/favicon-zombie.png" />
+  
+  <script type="text/javascript" src="https://apis.google.com/js/api.js?key=AIzaSyDWhMqXyvoCUfOvU1TSDPEH8Qm-454ZvVA"></script>
+  
+  {% javascripts '@SerielAppliToolboxBundle/Resources/public/js/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% javascripts '@SerielAppliToolboxBundle/Resources/public/js/seriel/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  
+  {% javascripts '@SerielAppliToolboxBundle/Resources/public/js/d3/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  
+  {% javascripts '@ZombieBundle/Resources/public/js/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% javascripts '@ZombieBundle/Resources/public/ckeditor/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% javascripts '@ZombieBundle/Resources/public/js/seriel/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% if is_granted('nav_page_admin') %}
+  {% javascripts '@ZombieBundle/Resources/public/js/seriel/admin/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% endif %}
+  {% javascripts '@ZombieBundle/Resources/public/js/seriel/actions/*.js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  
+  {% javascripts '@js_modules' output='js/modules.js'%}
+    <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+
+{% if disable_network is not defined or disable_network == false %}
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Exo+2:500,500italic,700,700italic&subset=latin,latin-ext);
+</style>
+{% endif %}
+  
+  {% stylesheets 'bundles/zombie/css/*' 'bundles/zombie/css/seriel/*' filter='cssrewrite' %}
+  <link rel="stylesheet" href="{{ asset_url }}">
+  {% endstylesheets %}
+
+  {% stylesheets '@SerielAppliToolboxBundle/Resources/public/css/*' filter='cssrewrite'  %}
+  <link rel="stylesheet" href="{{ asset_url }}">
+  {% endstylesheets %}
+  
+  {% stylesheets '@cs_modules' filter='cssrewrite' output='css/modules.css' %}
+  <link rel="stylesheet" href="{{ asset_url }}">
+  {% endstylesheets %}
+  
+  <script>
+  
+{% block javascripts %}
+
+CKEDITOR.basePath = '/bundles/zombie/ckeditor/'
+
+var resizeCounter = 0;
+function resizeOperations() {
+	$('.ps-container').perfectScrollbar('update');
+	$('.ui-accordion-seriel').serielAccordion('refresh');
+}
+
+var checkScreenTimeouts = [];
+
+function checkScreen() {
+
+	for (var i = 0; i < count(checkScreenTimeouts); i++) {
+		clearTimeout(checkScreenTimeouts[i]);
+	}
+
+	checkScreenTimeouts = [];
+	
+	checkScreenTimeouts.push(setTimeout(function() { resizeOperations(); }, 50));
+	checkScreenTimeouts.push(setTimeout(function() { resizeOperations(); }, 200));
+	checkScreenTimeouts.push(setTimeout(function() { resizeOperations(); }, 500));
+	checkScreenTimeouts.push(setTimeout(function() { resizeOperations(); }, 1000));
+}
+
+$(window).on('beforeunload', function(event) {
+	if (force_not_blocking_unload === true) {
+		return;
+	}
+	return "*** SANTE SERVICE DAX ***";
+});
+
+$(document).ready(function() {
+	
+	try {
+		cm();
+	} catch(err) {
+		console.log(err);
+	}
+	
+	initSsdDock();
+	hc().hashchange();
+	
+	var headerHeight = $('#header').height();
+	var footerHeight = $('#footer').height();
+	
+	$('body').serielLayout({
+		defaults: {
+			spacing_open: 0,
+			spacing_closed: 0
+		},
+		north: {
+			size: headerHeight
+		},
+		south: {
+			size: footerHeight
+		}
+	});
+
+	$('#footer').css('overflow', 'visible');
+
+	$(window).bind('resize', function() {
+		var ps_containers = $('.ps-container');
+
+		checkScreen();
+	});
+
+	$('body').bind('click', unActiveCurrentActions);
+	$('body').bind('click', unActiveCurrentWidget);
+
+	initActions();
+	initLists();
+	initAEListActions();
+	blockDeleteKey();
+
+	foot();
+
+	$('#header .logout').bind('click', function() { force_not_blocking_unload = true; });
+
+});
+{% endblock %}
+
+
+/****************** GOOGLE API *********************/
+  
+ var CLIENT_ID = '220095577981-hrsmllra346rmg93did0ehc6b3hjm9qm.apps.googleusercontent.com';
+ var SCOPES = 'https://www.googleapis.com/auth/drive';
+
+ /**
+  * Called when the client library is loaded to start the auth flow.
+  */
+ function handleClientLoad() {
+   window.setTimeout(checkAuth, 1);
+ }
+
+ /**
+  * Check if the current user has authorized the application.
+  */
+ function checkAuth() {
+   gapi.auth.authorize(
+       {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true},
+       handleAuthResult);
+ }
+
+ /**
+  * Called when authorization server replies.
+  *
+  * @param {Object} authResult Authorization result.
+  */
+ function handleAuthResult(authResult) {
+   var authButton = document.getElementById('authorizeButton');
+   var filePicker = document.getElementById('filePicker');
+   //authButton.style.display = 'none';
+   //filePicker.style.display = 'none';
+   if (authResult && !authResult.error) {
+	   alert('ACCESS OK');
+     // Access token has been successfully retrieved, requests can be sent to the API.
+     //filePicker.style.display = 'block';
+     //filePicker.onchange = uploadFile;
+   } else {
+	   alert('AUTH ERROR : '+authResult.error);
+	   for (var key in authResult) {
+		   alert(key+' : '+authResult[key]);
+		}
+     // No access token could be retrieved, show the button to start the authorization flow.
+     //authButton.style.display = 'block';
+     /*authButton.onclick = function() {
+         gapi.auth.authorize(
+             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
+             handleAuthResult);
+     };*/
+   }
+ }
+
+ /**
+  * Start the file upload.
+  *
+  * @param {Object} evt Arguments from the file selector.
+  */
+ function uploadFile(evt) {
+   gapi.client.load('drive', 'v2', function() {
+     var file = evt.target.files[0];
+     insertFile(file);
+   });
+ }
+
+ /**
+  * Insert new file.
+  *
+  * @param {File} fileData File object to read data from.
+  * @param {Function} callback Function to call when the request is complete.
+  */
+ function insertFile(fileData, callback) {
+   var boundary = '-------314159265358979323846';
+   var delimiter = "\r\n--" + boundary + "\r\n";
+   var close_delim = "\r\n--" + boundary + "--";
+
+   var reader = new FileReader();
+   reader.readAsBinaryString(fileData);
+   reader.onload = function(e) {
+     var contentType = fileData.type || 'application/octet-stream';
+     var metadata = {
+       'title': fileData.name,
+       'mimeType': contentType
+     };
+
+     var base64Data = btoa(reader.result);
+     var multipartRequestBody =
+         delimiter +
+         'Content-Type: application/json\r\n\r\n' +
+         JSON.stringify(metadata) +
+         delimiter +
+         'Content-Type: ' + contentType + '\r\n' +
+         'Content-Transfer-Encoding: base64\r\n' +
+         '\r\n' +
+         base64Data +
+         close_delim;
+
+     var request = gapi.client.request({
+         'path': '/upload/drive/v2/files',
+         'method': 'POST',
+         'params': {'uploadType': 'multipart'},
+         'headers': {
+           'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+         },
+         'body': multipartRequestBody});
+     if (!callback) {
+       callback = function(file) {
+         console.log(file)
+       };
+     }
+     request.execute(callback);
+   }
+  }
+</script>
+
+{% if disable_network is not defined or disable_network == false %}
+<!-- 
+    <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> -->
+    <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
+{% endif %}
+</head>
+
+<body>
+  <div id="header" class="ui-layout-north">
+  <span class="logo_zombie"></span>
+  <ul id="main_menu">
+    {% if is_granted('nav_page_accueil') %}<li class="accueil"><a href="#accueil"><span>Accueil</span></a></li>{% endif %}
+    {% if is_granted('nav_page_recherche') %}<li class="rechercher"><a href="#rechercher"><span>Recherche</span></a></li>{% endif %}
+    {% if is_granted('nav_page_planning') %}<li class="planning"><a href="#planning"><span>Planning</span></a></li>{% endif %}
+    {% if is_granted('nav_page_reporting') %}<li class="reporting"><a href="#reporting"><span>Statistiques</span></a></li>{% endif %}
+    {% if is_granted('nav_page_admin') %}<li class="admin"><a href="#admin"><span>Administration</span></a></li>{% endif %}
+
+  </ul>
+  <ul id="main_menu_buttons">
+    {#<li class="new_demande"><span>Nouvelle commande</span></li>#}
+  </ul>
+      {% set individu = current_individu() %}  
+      <span class="current_user"><span class="nom">{{ individu.nicename }}</span>{% if individu.mainEntity %}<br/><span class="entite">{{ individu.mainEntity.nom }}</span>{% else %}<br/><span class="entite">Le Temps</span>{% endif %}</span>
+      <a class="logout" title="Déconnexion de l'utilisateur {{ individu.nicename }}" href="{{ path('fos_user_security_logout') }}"><span>logout</span></a>
+  </div>
+
+  <div id="content" class="ui-layout-center">
+    {% block body %}{% endblock %}
+  </div>
+  
+  <div id="menu_footer_overlay"></div>
+  {# 
+  <div id="footer" class="ui-layout-south">
+ <div class="menu_container disable_email_addr_click">
+    <div class="footer_menu">
+      <div class="head">
+        <ul><li class="btn btn_di selected"><span>#TODO</span></li>{</ul>
+      </div>
+      <div class="cnt di_visible dd_visible comp_visible email_visible fax_visible">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+
+  
+  <div class="alert_container"></div>
+  <div class="button_container"><div class="button_menu"></div>
+  </div>
+ 
+  </div>
+   #}
+</body>
+
+</html>

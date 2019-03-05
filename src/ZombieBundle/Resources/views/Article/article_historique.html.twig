@@ -1,0 +1,13 @@
+<span class="nav_widget">articleHistoNav</span>
+
+<div class="article_histo_container" article_id="{{ article_id }}">
+<div class="tabs ui-layout-north">
+
+{% for module in module_history %}
+ 	<span hash="article[{{ article_id }}]/historique/{{ module }}">{{ module |capitalize }}</span>
+{% endfor %}
+</div>
+<div class="contents ui-layout-center">
+
+</div>
+</div>

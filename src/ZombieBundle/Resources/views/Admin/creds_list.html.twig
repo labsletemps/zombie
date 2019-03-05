@@ -1,0 +1,17 @@
+{% if profCredsByCredId is not defined %}{% set profCredsByCredId = {} %}{% endif %}
+{% for cred in creds %}
+{% set profCred = profCredsByCredId[cred.id] is defined ? profCredsByCredId[cred.id] : null %}
+<li cred_id="{{ cred.id }}" class="compat_normal{% if profCred is not empty %} checked{% endif %}">
+  {% if cred.hasLevel %}{% if profCred is not empty %}{{ cred_access_level_choice(cred, profCred.accessLevel) }}{% else %}{{ cred_access_level_choice(cred) }}{% endif %}{% endif %}
+  <span class="checkbox"><input type="checkbox" name="{{ cred.id }}" id="{{ cred.id ~ '_' ~ uid }}"{% if profCred is not empty %} checked="checked"{% endif %}></span>
+  <label for="{{ cred.id ~ '_' ~ uid }}" class="libelle">{{ cred.name }}</label>
+  {% if cred.hasChoices %}<br/>{% if profCred is not empty %}{{ cred_choices(cred, profCred.choice) }}{% else %}{{ cred_choices(cred) }}{% endif %}{% endif %}
+  {% if cred.hasLevel %}<span class="clear_both"></span>{% endif %}
+  {% set children = cred.childrensCredentials %}
+  {% if children is not empty %}
+  <ul>
+{% include "ZombieBundle:Admin:creds_list.html.twig" with { 'creds': children, 'uid': uid, 'profCredsByCredId': profCredsByCredId } only %}
+  </ul>
+  {% endif %}
+</li>
+{% endfor %}

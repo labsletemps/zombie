@@ -1,0 +1,231 @@
+<?php
+
+namespace ZombieBundle\Entity\Params;
+
+use Doctrine\ORM\Mapping as ORM;
+use ZombieBundle\Entity\RootObject;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="parameters",options={"engine"="MyISAM"},indexes={@ORM\Index(name="nom_parameter_idx", columns={"nom"})})
+ */
+class Parameter extends RootObject
+{
+	const TYPE_INTEGER = 1;
+	const TYPE_FLOAT = 2;
+	const TYPE_BOOLEAN = 3;
+	const TYPE_STRING = 4;
+	
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+	
+	/**
+	 * @ORM\Column(type="string", length=100, unique=true, nullable=false)
+	 */
+	protected $nom;
+	
+   /**
+	* @ORM\Column(type="integer", nullable=false)
+	*/
+	protected $type;
+	
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	protected $int_val;
+	
+	/**
+	 * @ORM\Column(type="float", nullable=true)
+	 */
+	protected $float_val;
+	
+	/**
+	 * @ORM\Column(type="boolean", nullable=true)
+	 */
+	protected $bool_val;
+	
+	/**
+	 * @ORM\Column(type="text", nullable=true)
+	 */
+	protected $string_val;
+	
+	public function __construct()
+	{
+		parent::__construct();
+	}
+	
+	public function getId() {
+		return $this->id;
+	}
+	
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Parameter
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     *
+     * @return Parameter
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set intVal
+     *
+     * @param integer $intVal
+     *
+     * @return Parameter
+     */
+    public function setIntVal($intVal)
+    {
+        $this->int_val = $intVal;
+
+        return $this;
+    }
+
+    /**
+     * Get intVal
+     *
+     * @return integer
+     */
+    public function getIntVal()
+    {
+        return $this->int_val;
+    }
+
+    /**
+     * Set floatVal
+     *
+     * @param string $floatVal
+     *
+     * @return Parameter
+     */
+    public function setFloatVal($floatVal)
+    {
+        $this->float_val = $floatVal;
+
+        return $this;
+    }
+
+    /**
+     * Get floatVal
+     *
+     * @return string
+     */
+    public function getFloatVal()
+    {
+        return $this->float_val;
+    }
+
+    /**
+     * Set boolVal
+     *
+     * @param boolean $boolVal
+     *
+     * @return Parameter
+     */
+    public function setBoolVal($boolVal)
+    {
+        $this->bool_val = $boolVal;
+
+        return $this;
+    }
+
+    /**
+     * Get boolVal
+     *
+     * @return boolean
+     */
+    public function getBoolVal()
+    {
+        return $this->bool_val;
+    }
+
+    /**
+     * Set stringVal
+     *
+     * @param string $stringVal
+     *
+     * @return Parameter
+     */
+    public function setStringVal($stringVal)
+    {
+        $this->string_val = $stringVal;
+
+        return $this;
+    }
+
+    /**
+     * Get stringVal
+     *
+     * @return string
+     */
+    public function getStringVal()
+    {
+        return $this->string_val;
+    }
+    
+    public function setVal($val) {
+    	if ($this->type == self::TYPE_INTEGER) $this->int_val = $val;
+    	else $this->int_val = null;
+    	
+    	if ($this->type == self::TYPE_FLOAT) $this->float_val = $val;
+    	else $this->float_val = null;
+    	
+    	if ($this->type == self::TYPE_BOOLEAN) $this->bool_val = $val;
+    	else $this->bool_val = null;
+    	
+    	if ($this->type == self::TYPE_STRING) $this->string_val = $val;
+    	else $this->string_val = null;
+    }
+    
+    public function getVal() {
+    	if ($this->type == self::TYPE_INTEGER) return $this->int_val;
+    	else if ($this->type == self::TYPE_FLOAT) return $this->float_val;
+    	else if ($this->type == self::TYPE_BOOLEAN) return $this->bool_val;
+    	else if ($this->type == self::TYPE_STRING) return $this->string_val;
+    	return null;
+    }
+}

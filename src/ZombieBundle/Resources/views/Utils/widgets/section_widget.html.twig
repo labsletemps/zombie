@@ -1,0 +1,11 @@
+<span name="{% if name is defined and name %}{{ name }}{% else %}section{% endif %}" val="{% if value is defined and value %}{{ value }}{% endif %}" class="widget section_widget{% if thin %} thin{% endif %}{% if multi %} widget_multi{% endif %}"{% if resume_name is defined and resume_name %} resume_name="{{ resume_name }}"{% endif %}{% if resume_pos is defined and resume_pos %} resume_pos="{{ resume_pos }}"{% endif %}>
+<span class="button">{% if title is defined and title %}<span class="title{% if fixed_title is defined and fixed_title %} fixed{% endif %}">{{ title }}</span>{% endif %}</span>
+<span class="content">
+  <ul>
+{% for section in sections %}<li class="ui-widget-content" val="{{ section }}">{{ section }}</li>{% endfor %}
+  </ul>
+</span>
+{% if has_resume is defined and has_resume %}
+<span class="resume"></span>
+{% endif %}
+</span>

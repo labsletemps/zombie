@@ -1,0 +1,97 @@
+
+<span class="nav_widget">edit_profil_accueil</span>
+
+<div class="profil_accueil_container">
+
+<span class="profil_id hidden">{{ profil.id }}</span>
+
+<div class="list_left">
+<div class="title">Menu de gauche<span class="add_button" title="Ajouter un groupe"></span></div>
+<div class="cnt">
+<ul>
+{% for elem in menu_left %}
+{% if (elem.option2 == 'group') %}
+<li class="group" num="{{ elem.id }}"{% if elem.option4 is not null and elem.option4 is not empty %} icon="{{ elem.option4 }}"{% endif %}><span>{{ elem.option3 }}<span class="edit"></span><span class="delete"></span></span></li>
+{% elseif (elem.option2 == 'list') %}
+<li rs_id="{{ elem.option4 }}" rs_type="list"><span class="list"><span class="addleft">Ajouter</span>{{ elem.option3 }}<span class="addright">Ajouter</span><span class="remove"><span>Supprimer</span></span></span></li>
+{% elseif (elem.option2 == 'report') %}
+<li rs_id="{{ elem.option4 }}" rs_type="report"><span class="report"><span class="addleft">Ajouter</span>{{ elem.option3 }}<span class="addright">Ajouter</span><span class="remove"><span>Supprimer</span></span></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</div>
+
+<div class="list_saved_searches">
+<div class="title">&Eacute;l&eacute;ments disponibles</div>
+<div class="cnt">
+<div class="ticket">
+<span class="ttl">Article</span>
+<ul>
+{% for rs in article_search %}
+  <li rs_id="{{ rs.id }}" rs_type="list"{% if used_rs_ids[rs.id] is defined %} class="selected"{% endif %}><span class="list"><span class="addleft">Ajouter</span>{{ rs.nom }}<span class="addright">Ajouter</span><span class="remove"><span>Supprimer</span></span></span></li>
+{% endfor %}
+{% for rs in article_report %}
+  <li rs_id="{{ rs.id }}" rs_type="report"{% if used_reports_ids[rs.id] is defined %} class="selected"{% endif %}><span class="report"><span class="addleft">Ajouter</span>{{ rs.nom }}<span class="addright">Ajouter</span><span class="remove"><span>Supprimer</span></span></span></li>
+{% endfor %}
+</ul>
+</div>
+
+
+</div>
+</div>
+
+<div class="list_right">
+<div class="title">Menu de droite<span class="add_button" title="Ajouter un groupe"></span></div>
+<div class="cnt">
+<ul>
+{% for elem in menu_right %}
+{% if (elem.option2 == 'group') %}
+<li class="group" num="{{ elem.id }}"{% if elem.option4 is not null and elem.option4 is not empty %} icon="{{ elem.option4 }}"{% endif %}><span>{{ elem.option3 }}<span class="edit"></span><span class="delete"></span></span></li>
+{% elseif (elem.option2 == 'list') %}
+<li rs_id="{{ elem.option4 }}" rs_type="list"><span class="list"><span class="addleft">Ajouter</span>{{ elem.option3 }}<span class="addright">Ajouter</span><span class="remove"><span>Supprimer</span></span><span class="designation">{{ elem.option5 }}</span></span></li>
+{% elseif (elem.option2 == 'report') %}
+<li rs_id="{{ elem.option4 }}" rs_type="report"><span class="report"><span class="addleft">Ajouter</span>{{ elem.option3 }}<span class="addright">Ajouter</span><span class="remove"><span>Supprimer</span></span><span class="designation">{{ elem.option5 }}</span></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</div>
+
+<div class="add_groupe_container hidden">
+<span class="nav_widget">edit_profil_accueil_add_group</span>
+<div style="padding: 20px">
+<form action="#">
+<div style="text-align: center"><label>Nom</label> &nbsp; &nbsp; <input type="text" name="nom" class="nom" style="padding-left: 5px; padding-right: 5px;" required /></div>
+<div style="text-align: center; padding-top: 10px;"><label>Ic&ocirc;ne</label> &nbsp; &nbsp;
+<select name="icon" class="icon_select">
+<option value="">Aucune</option>
+<option value="demande">Demande</option>
+<option value="demande_inter">Demande d'intervention</option>
+<option value="demande_devis">Demande de devis</option>
+<option value="intervention">Intervention</option>
+<option value="preventif">Pr&eacute;ventif</option>
+<option value="devis">Devis</option>
+<option value="facture">Facture</option>
+<option value="search">Recherche</option>
+<option value="reporting">Reporting</option>
+<option value="perso">Perso</option>
+<option value="infos">Infos</option>
+<option value="autre">Autre</option>
+</select>
+</div>
+<input type="hidden" name="pos" class="pos" value="" />
+<input type="hidden" name="num" class="num" value="" />
+<input type="submit" style="display: none" />
+</form>
+<span class="actions_group_accueil_buttons" style="display: block; text-align: center; padding-top: 30px;">
+  <span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Ajouter</span></span>
+</span>
+</div>
+</div>
+
+<div class="profil_accueil_buttons">
+<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer la page d'accueil</span></span>
+</span></span></div>
+
+</div>

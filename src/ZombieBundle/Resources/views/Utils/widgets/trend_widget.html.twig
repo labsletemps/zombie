@@ -1,0 +1,12 @@
+<span name="{% if name is defined and name %}{{ name }}{% else %}trend{% endif %}" val="{% if value is defined and value %}{{ value }}{% endif %}" class="widget trend_widget{% if thin %} thin{% endif %}{% if multi %} widget_multi{% endif %}"{% if resume_name is defined and resume_name %} resume_name="{{ resume_name }}"{% endif %}{% if resume_pos is defined and resume_pos %} resume_pos="{{ resume_pos }}"{% endif %}>
+<span class="button">{% if title is defined and title %}<span class="title{% if fixed_title is defined and fixed_title %} fixed{% endif %}">{{ title }}</span>{% endif %}</span>
+<span class="content">
+  <h3 class="title_trend_widget">Trends du {{ "now"|date_modify("-1 day")|date("d/m/Y") }}</h3>
+  <ul>
+{% for trend, value in trends %}<li class="ui-widget-content" val="{{ trend }}">{{ trend }} ({{ value }})</li>{% endfor %}
+  </ul>
+</span>
+{% if has_resume is defined and has_resume %}
+<span class="resume"></span>
+{% endif %}
+</span>

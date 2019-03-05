@@ -1,0 +1,50 @@
+<span class="nav_widget">articleNav</span>
+
+<div class="dock_block_content">
+<div class="uid">article_{{ article.id }}</div>
+<div class="text">
+<span class="ligne1">{{ article.titre|slice(0, 40) }}</span>
+<span class="ligne2">{{ article.motcle }}</span></div>
+</div>
+
+<div class="menu_left menu_ticket ui-layout-west" layout-size="244">
+	<span class="article_id hidden">{{ article.id }}</span>
+    <div style="height: 20px;"></div>
+
+    <div class="left_block last">
+        <span class="title"><span>ARTICLE</span></span>
+        <ul class="datas_container">
+            <li id="article_infos_{{ article.id }}" class="article_infos selected" onclick="document.location.hash = 'article[{{ article.id }}]'">
+                <span>
+                    <span class="title">Informations</span>
+                    <span class="desc">Détails de l'article</span>
+                </span>
+            </li>
+            <li id="article_histo_{{ article.id }}" class="article_histo" onclick="document.location.hash = 'article[{{ article.id }}]/historique'">
+                <span>
+                    <span class="ancre title" ancre="historique">Historique</span>
+                    <span class="desc">Vie de l'article</span>
+                </span>
+            </li>
+            <li id="article_semantique_{{ article.id }}" class="article_semantique" onclick="document.location.hash = 'article[{{ article.id }}]/semantique'">
+                <span>
+                    <span class="ancre title" ancre="semantique">S&eacute;mantique</span>
+                    <span class="desc">&Eacute;l&eacute;ments s&eacute;mantiques</span>
+                </span>
+            </li>
+        </ul>
+        
+
+    </div>
+
+</div>
+<div class="cont ui-layout-center">
+
+{% if supp is defined and supp is not null %}
+<div class="navigator-preload">
+<div class="key">{{ supp.key }}</div>
+<div class="content">{{ supp.content }}</div>
+</div>
+{% endif %}
+
+</div>

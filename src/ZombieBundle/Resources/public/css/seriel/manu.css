@@ -1,0 +1,830 @@
+@CHARSET "ISO-8859-1";
+
+.admin_container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.admin_container .liste_container {
+	position: absolute;
+}
+.admin_container .liste_container  .list_content {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	border: solid 1px #d8d8d8;
+}
+
+.admin_button:active {
+	box-shadow: inset 0px 0px 6px 0px #000000;
+	color: #f8f8f8;
+	background-color: #2882b5;
+}
+
+.admin_list_container {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	right: 20px;
+	bottom: 20px;
+	border: solid 1px #cccccc;
+}
+
+.add_metier_container > div > div > textarea,
+.add_delai_container > div > textarea{
+	display: block;
+	margin-top: 8px;
+	width: 500px;
+	max-width: 500px;
+	min-width: 500px;
+	height: 120px;
+	max-height: 120px;
+	min-height: 120px;
+	border: solid 1px #cccccc;
+	position: absolute;
+	left: 15px;
+}
+.add_metier_container > div,
+.add_delai_container > div,
+.add_activite_container > div,
+.add_type_activite_container > div,
+.add_type_contrat_container > form > div > div,
+.add_prestation_container > form > div > div,
+.add_modeleEnquete_container > form > div > div,
+.add_tauxTVA_container > form > div > div{
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 140px;
+}
+
+.add_metier_container > div > div > label,
+.add_delai_container > div > label,
+.add_activite_container > div > label,
+.add_type_activite_container > div > label,
+.add_type_contrat_container > form > div> div > label,
+.add_prestation_container > form > div> div > label,
+.add_modeleEnquete_container > form > div> div > label,
+.add_tauxTVA_container > form > div> div > label,{
+	position: absolute;
+	left: 15px;
+	display: inline-block;
+	width: 130px;
+	padding-right: 10px;
+}
+
+.add_delai_container > div > select,
+.add_type_contrat_container > form > div > div > select {
+	width: 170px;
+}
+
+.add_type_contrat_container #form_submit,
+.add_prestation_container #form_submit,
+.add_modeleEnquete_container #form_submit,
+.add_tauxTVA_container #form_submit {
+	display: none;
+}
+
+.add_prestation_container div#form > div > ul > li,
+.add_type_contrat_container div#form > div > ul > li,
+.add_tauxTVA_container div#form > div > ul > li
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	color: #880000;
+}
+
+.liste_client_metier{
+	width: 100%;
+	background-color: white;
+	text-align: center;
+}
+.liste_client_metier  th {
+	background-color: #daeaf2;
+}
+
+
+.liste_container{
+	padding: 15px;	
+}
+
+.search_button,
+.save_metierClient_button {
+	display: block;
+	background-color: #95172c;
+	color: white;
+	font-weight: bold;
+	margin: 12px 16px;
+	text-align: center;
+	padding: 8px;
+	font-size: 1.2em;
+	border-radius: 3px;
+	text-transform: uppercase;
+	cursor: pointer;
+	width: 150px;
+}
+.codeId{
+	
+	display: none;
+}
+.clientId{
+	display: none;
+}
+.tableau{
+	width: 100%;
+}
+
+.onglets{
+	padding: 15px;
+	background-color: #daeaf2;
+	position: absolute;
+	left: 0;
+	top: 30px;
+	height: 440px;
+}
+
+.ajoutQuestion {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background-color: #95172c;
+	border-radius: 3px;
+	color: white;
+	text-align: center;
+	padding: 8px;
+	width: 171px;
+	font-weight: bold;
+	cursor: pointer;
+	
+}
+
+.blockQuestions{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.bockNotes{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.ajouterNote{
+	background-color: #95172c;
+	border-radius: 3px;
+	color: white;
+	text-align: center;
+	padding: 8px;
+	width: 150px;
+	float: right;
+	font-weight: bold;
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	bottom: 85px;
+	display: block;
+}
+
+.modal-buttons{
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+}
+
+.liste{
+	position: absolute;
+	top:10px;
+	right: 10px;
+	height: 350px;
+	width: 300px;
+	max-height: 300px;
+	overflow: auto;
+}
+
+#scroll{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.groupeNote{
+	margin: 5px;
+}
+
+.note {
+	display: inline-block;
+	width: 50px;
+}
+
+.add_modeleEnquete_container{
+	position: absolute;
+	top: 30px;
+	left: 205px;
+	width: 653px;
+	height: 443px;
+}
+
+.add_campagne_enquete_container > div > label{
+	width: 137px;
+	display: inline-block;
+	
+}
+
+.add_campagne_enquete_container > form > div > div > select,
+.add_campagne_enquete_container > div > select{
+	width: 154px;
+}
+
+.form_mat_field > div {
+	padding-left: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.form_mat_field > div > label {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 230px;
+	line-height: 1.1em;
+}
+
+.form_mat_field > div > input,
+.form_mat_field > div > span.widget {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	padding-right: 10px;
+}
+
+.ui-dialog .add_materiel_container div#form > div {
+	padding-left: 200px;
+}
+
+
+.div_gauche {
+	position: absolute;
+	top: 15px;
+	bottom: 15px;
+	left: 15px;
+	width: 400px;
+	max-height: 383px;
+	border: solid 1px #cccccc;
+}
+
+.div_gauche >.list_content > .list_head{
+	display: none;
+}
+
+.div_gauche > .list_content >.list_elems{
+	position: absolute;
+	top: 0px;
+}
+
+.metierContainer{
+	position: absolute;
+	top: 15px;
+	bottom:60px;
+	right: 15px;
+	width: 400px;
+	max-height: 500px;
+	overflow: auto;
+	border: solid 1px #cccccc;
+}
+
+.item{
+	background-color: #95172c;
+	padding: 9px;
+	margin: 5px;
+	color: white;
+	
+}
+
+.metiers_modale {
+	height: 351px;
+	max-height: 351px;
+}
+
+.base_de_co {
+	background-color: white;
+	position: absolute;
+    top: 34px;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+    padding: 25px 15px 15px 15px;
+}
+
+.base_de_co .folder {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	height: 110px;
+	background-image: url(../../images/charte/coquette/64x64/folder.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+.base_de_co .folder .repName {
+	position: absolute;
+	display: block;
+	text-align: center;
+	top: 64px;
+	left: 10px;
+	right: 10px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .9em;
+}
+
+.widget.folder_widget.invisible {
+	opacity: .3;
+}
+.widget.folder_widget.invisible:hover {
+	opacity: .9;
+}
+
+.widget.folder_widget > .button {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	width: 80px;
+	height: 46px;
+	padding-top: 64px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0;
+	background-image: url(../../images/charte/coquette/64x64/folder.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	min-width: 0;
+	white-space: normal;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .9em;
+    text-align: center;
+    border: none;
+}
+.widget.folder_widget > .button::after {
+	display: none;
+}
+.base_de_co .file,
+.bdc_rep_content .file {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	height: 110px;
+	background-image: url(../../images/charte/coquette/64x64/new_page.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+.base_de_co .file .fileName,
+.bdc_rep_content .file .fileName {
+	position: absolute;
+	display: block;
+	text-align: center;
+	top: 64px;
+	left: 10px;
+	right: 10px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .9em;
+}
+
+.bdc_rep_content {
+	padding: 10px;
+	min-height: 100px;
+	max-width: 500px;
+}
+
+.bdc_rep_title {
+	min-width: 200px;
+	padding: 1px 3px;
+	background-color: #eaeaea;
+	border-bottom: solid 1px #cccccc;
+}
+.bdc_rep_title > .act {
+	display: inline-block;
+	padding: 6px 10px;
+	cursor: pointer;
+}
+.bdc_rep_title > .act:hover {
+	color: #95172c;
+	background-color: #efefef;
+}
+
+.base_de_co .doc,
+.bdc_rep_content .doc {
+	width: 80px;
+	margin-top: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.base_de_co .doc.invisible,
+.bdc_rep_content .doc.invisible {
+	opacity: .3;
+}
+.base_de_co .doc.invisible:hover,
+.bdc_rep_content .doc.invisible:hover {
+	opacity: .9;
+}
+
+.base_de_co .doc > .thumb,
+.bdc_rep_content .doc > .thumb {
+	width: 50px;
+	margin-left: 15px;
+	height: 58px;
+	border: none;
+	border-radius: 8px;
+	background-color: #e8e8e8;
+}
+.base_de_co .doc > .title,
+.bdc_rep_content .doc > .title {
+	background: none;
+	white-space: normal;
+	padding: 0;
+	text-align: center;
+	margin-top: 5px;
+}
+.base_de_co .doc > .title .label,
+.bdc_rep_content .doc > .title .label,
+.base_de_co .doc:hover > .title .label,
+.bdc_rep_content .doc:hover > .title .label {
+	font-weight: normal;
+	color: #5d5d5d;
+}
+.base_de_co .doc > .title .date,
+.bdc_rep_content .doc > .title .date,
+.base_de_co .doc:hover > .title .date,
+.bdc_rep_content .doc:hover > .title .date {
+	font-style: italic;
+	color: #a0a0a0;
+}
+
+.compte_contacts,
+.article_fournisseurs {
+	padding: 1.5%;
+}
+.compte_agences .presta_block {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	width: 32%;
+}
+.compte_agences .info_contact:nth-child(3n+1) {
+	margin-right: 0;
+}
+
+.presta_block .block_left {
+	display: inline-block;
+	vertical-align: top;
+	width: 48%;
+	padding-left: 1%;
+	padding-right: 1%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.presta_block .block_right {
+	display: inline-block;
+	vertical-align: top;
+	width: 48%;
+	padding-left: 1%;
+	padding-righ: 1%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.block_ancre_agences{
+	padding: 16px;
+}
+
+.block_ancre_agences > .compte_agences > .title{
+	padding-bottom: 5px;
+}
+
+.modele_email_area {
+	position: absolute;
+	top: 30px;
+}
+
+.save_button {
+	    display: inline-block;
+    padding: 5px 15px;
+    background-color: #39b539;
+    border-radius: 4px;
+    border: solid 1px #39b539;
+    color: #f8f8f8;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    min-width: 80px;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: .2s;
+}
+
+
+.facture_debours_container > .left_helper {
+	overflow: hidden;
+	border-right: solid 1px #cccccc;
+}
+.facture_debours_container > .left_helper div.ancre {
+	position: relative;
+	cursor: pointer;
+}
+ .facture_debours_container > .left_helper div.ancre > span {
+	display: inline-block;
+	color: #a0a0a0;
+	position: relative;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transform: rotate(-90deg);
+       -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+         -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+}
+.facture_debours_container > .left_helper div.ancre:hover > span {
+	color: #95172c;
+	text-shadow: 0px 0px 12px #95172c;
+}
+
+.fac_gestion_container,
+.fac_debours_container {
+    position: relative;
+    width: 600px;
+}
+
+.facture_container > .left_helper.ui-layout-west {
+    position: absolute;
+    top: 34px;
+    left: 0px;
+    width: 34px;
+    height: 449px;
+}
+
+.facture_debours_container {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    border: 1px #cccccc solid;
+}
+
+.content_centre_facture > .block_ancre.block_ancre_client,
+.content_centre_facture > .block_ancre.block_ancre_facture,
+.content_centre_facture > .block_ancre.block_ancre_documents,
+.content_centre_facture > .block_ancre.block_ancre_noteDebis,
+.content_centre_facture > .block_ancre.block_ancre_details,
+.content_centre_facture > .block_ancre.block_ancre_bts {
+    position: relative;
+    padding-left: 30px;
+   	margin-bottom: 10px;
+   	border_bottom: 1px #cecece solid;
+}
+
+.content_centre_facture .block_ancre.block_ancre_client,
+.content_centre_facture .block_ancre.block_ancre_facture {
+	border-top: none;
+}
+
+.content_centre_facture > .block_ancre.block_ancre_client,
+.content_centre_facture > .block_ancre.block_ancre_facture {
+	display: inline-block;
+	vertical-align: top;
+}
+.content_centre_facture > .block_ancre.block_ancre_client {
+	width: 320px;
+}
+.content_centre_facture > .block_ancre.block_ancre_facture {
+	width: 620px;
+}
+.content_centre_facture .list_content {
+	border: solid 1px #cccccc;
+}
+
+.content_centre_facture {
+    position: absolute;
+    top: 34px;
+    left: 34px;
+    right: 0;
+    bottom: 0px;
+    overflow: auto;  
+}
+
+.content_centre_facture > .block_ancre.block_ancre_noteDebis > table > thead {
+	background-color: #daeaf2;
+}
+
+.content_centre_facture > .block_ancre.block_ancre_noteDebis > table {
+	border : solid 1px #cccccc;
+	width: 100%;
+}
+.content_centre_facture > .block_ancre.block_ancre_noteDebis > table > tr > td {
+	border: solid 1px #cccccc;
+}
+
+.content_centre_facture > .block_ancre.block_ancre_noteDebis > table > tbody > tr {
+	cursor: pointer;
+}
+
+.content_centre_facture > .block_ancre.block_ancre_noteDebis > table > tbody > tr:hover {
+	background-color: #cecece;
+}
+
+#raison {
+	width: 140px;
+	heigth: 75px;
+	margin-top : 20px;
+	display: inline-block;
+}
+
+.label_raison {
+	width: 140px;
+	display: inline-block;
+}
+
+.add_client_button {
+	display: block;
+	position: relative;
+	bottom: 2px;
+	width: 35px;
+	height: 35px;
+	padding: 0;
+	margin: 0;
+	background: url(../../images/charte/plus.png) center 9px no-repeat;
+	background-size: 15px auto;
+	cursor: pointer;
+	float: right;
+}
+
+.results > .elems > .disabled span {
+	color: #aaaaaa;
+}
+ 
+.list_elems table.list .code_container>input {
+	width: 85px;
+}
+
+.compte_info_memo,
+.presta_info_memo {
+    display: inline-block;
+    padding: 10px;
+    border: 1px #cccccc solid;
+    margin: 2.5%;
+	margin: 2.5%;
+    width: 31%;
+    min-height: 80px;
+}
+
+@media (min-width: 1800px) {
+ .compte_info_memo,
+ .presta_info_memo {
+	    display: inline-block;
+	    padding: 10px;
+	    border: 1px #cccccc solid;
+	    margin: 2.5%;
+		margin: 1.5%;
+	    width: 26%;
+	    min-height: 80px;
+	}
+}
+
+
+
+.compte_info_horaires{
+	margin-right: 25px;
+}
+
+.compte_info_memo > .titre_block,
+.presta_info_memo > .titre_block {
+	font-weight : bold;
+}
+
+.selectProfil {
+	padding: 14px;
+}
+
+.compteur_result {
+	position: absolute;
+	bottom: 80px;
+	right: 36px;
+}
+
+.nbResult {
+	color: #95172c;
+}
+
+.images_a_gerer {
+	border: 2px solid  #95172c;
+	width : 516px;
+	height: 282px;
+	position: absolute;
+	top: 50px;
+	bottom: 100px;
+	left: 13px;
+	right: 10px;
+	overflow: auto;
+}
+
+.images_a_gerer > .doc{
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: -35px;	
+}
+
+.images_a_gerer > .doc > .thumb {
+	width: 100px;
+	height: 80px;	
+}
+
+.images_a_gerer > .doc > .thumb {
+	width: 100px;
+	height: 80px;	
+}
+
+.ajouter_images  {
+	position: absolute;
+	left: 360px;
+	background-color : #95172c;
+	color: white;
+	border-radius: 3px;
+	padding: 5px;
+	cursor: pointer;
+	top: 10px;
+}
+
+.save_search_container > .content > .cnt .perso > .cont > ul > li > .delete {
+	position: absolute; 
+	right: 10px;
+	width: 18px;
+	height: 18px;
+	background-image: url(../../images/charte/trash.png);
+	background-size: 18px auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: .7;
+	cursor: pointer;
+	display: inline-block;
+	top: 0px;
+	border: none;
+}
+.save_search_container > .content > .cnt .perso > .cont > ul > li:hover > span.delete {
+	border: none;
+}
+.save_search_container > .content > .cnt .perso > .cont > ul > li > span.delete:hover {
+	opacity: 1;
+	background-color: #f8f8f8;
+}
+
+.save_search_container > .content > .cnt .perso > .cont > ul > li > .share {
+	position: absolute; 
+	right: 38px;
+	width: 18px;
+	height: 18px;
+	background-image: url(../../images/charte/coquette/16x16/share.png);
+	background-size: 18px auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: .7;
+	cursor: pointer;
+	display: inline-block;
+	top: 0px;
+	border: none;	
+}
+.save_search_container > .content > .cnt .perso > .cont > ul > li:hover > span.share {
+	border: none;
+}
+.save_search_container > .content > .cnt .perso > .cont > ul > li > span.share:hover {
+	opacity: 1;
+	background-color: #f8f8f8;
+}
+
+button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+.confirmation_ui_content{
+	font-size: 16px;
+	padding: 10px;
+}

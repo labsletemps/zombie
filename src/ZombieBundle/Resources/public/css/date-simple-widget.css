@@ -1,0 +1,70 @@
+.simpleDate {
+    min-height: 125px!important;
+}
+
+.simpleDate input {
+    display:inline;
+    background:transparent;
+    border:none;
+}
+
+.simpleDate .day_shortcuts > ul > li,
+.simpleDate .week_shortcuts > ul > li,
+.simpleDate .month_shortcuts > ul > li,
+.simpleDate .year_shortcuts > ul > li {
+    display: inline-block!important;
+    margin-left:3px
+}
+
+
+.simpleDate .day_shortcuts,
+.simpleDate .week_shortcuts,
+.simpleDate .month_shortcuts,
+.simpleDate .year_shortcuts {
+    display: block!important
+}
+
+.simpleDate .day_shortcuts > ul > li.blank,
+.simpleDate .week_shortcuts > ul > li.blank,
+.simpleDate .month_shortcuts > ul > li.blank,
+.simpleDate .year_shortcuts > ul > li.blank {
+    background-color: transparent;
+    cursor:default
+}
+
+.simpleDate .day_short > ul,
+.simpleDate .week_shortcuts > ul,
+.simpleDate .month_shortcuts > ul,
+.simpleDate .year_shortcuts > ul {
+    display: block;
+     padding: auto;
+    margin: auto;
+    list-style: none;
+}
+
+/** Buttons **/
+.less_button,.more_button {cursor:pointer}
+
+.less_button {
+    background-color: #F5A9A9!important;
+    color: black!important;
+}
+.less_button.small {
+    min-width: 0;
+}
+.less_button:active {
+    box-shadow: inset 0 0 7px -2px #808080;
+}
+.less_button input {font-weight:bold}
+
+.more_button {
+    background-color: #81F781!important;
+    color: black!important;
+}
+.more_button.small {
+    min-width: 0;
+}
+.more_button:active {
+    box-shadow: inset 0 0 7px -2px #808080;
+}
+.more_button input {font-weight:bold}

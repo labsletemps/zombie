@@ -1,0 +1,20 @@
+<span class="nav_widget">profilsSocieteListNav</span>
+
+<div class="block_edit_profils">
+
+<div class="profils_head actions">
+<ul>
+  <li>
+    <span>Cr&eacute;ation</span>
+  	<ul>
+  	  <li class="action" action="ajout_profil"><span>Cr&eacute;er un nouveau profil Utilisateur</span></li>
+  	</ul>
+  </li>
+</ul>
+</div>
+
+<div class="liste_container">
+{{ liste(profils, null, 'ZombieBundle\\Entity\\Securite\\ZombieProfil',  { 'static': true }) }}
+</div>
+
+</div>

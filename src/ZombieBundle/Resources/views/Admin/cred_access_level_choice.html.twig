@@ -1,0 +1,5 @@
+<select class="cred_level">
+{% for id,option in options %}
+<option value="{{ id }}"{% if selected is not empty and selected == id %} selected="selected"{% endif %}>{{ option }}</option>
+{% endfor %}
+</select>

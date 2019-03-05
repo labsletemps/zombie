@@ -1,0 +1,40 @@
+services:
+    security.access.dandelion_article_semantics_voter:
+        class:      Seriel\DandelionBundle\Securite\Voters\DandelionArticleSemanticsVoter
+        public:     false
+        arguments: ["@service_container"]
+        tags:
+           - { name: security.voter }
+
+    seriel_dandelion.manager:
+        class: Seriel\DandelionBundle\Managers\DandelionManager
+        arguments: ["@service_container", "@logger", "%dandelion%"]
+
+    seriel_dandelion.article_semantics_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionArticleSemanticsManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    seriel_dandelion.dandelion_entities_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionEntitiesManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    seriel_dandelion.dandelion_entities_type_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionEntitiesTypeManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    seriel_dandelion.dandelion_subject_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionSubjectManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    seriel_dandelion.dandelion_articlesubject_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionArticleSubjectManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    seriel_dandelion.dandelion_article_entity_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionArticleEntityManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+
+    seriel_dandelion.dandelion_article_entity_link_entity_manager:
+        class: Seriel\DandelionBundle\Managers\DandelionArticleEntityLinkEntityManager
+        arguments: ["@doctrine", "@logger", "@service_container"]        
+ 

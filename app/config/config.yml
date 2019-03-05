@@ -1,0 +1,143 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@ZombieBundle/Resources/config/services.yml" }
+    - { resource: "@LeTempsSourcesBundle/Resources/config/services.yml" }
+    - { resource: "@SerielLdaBundle/Resources/config/services.yml" }
+    - { resource: "@SerielRelatedwordBundle/Resources/config/services.yml" }
+    - { resource: "@SerielTrendBundle/Resources/config/services.yml" }
+    - { resource: "@SerielGoogleAnalyticsBundle/Resources/config/services.yml" }  
+    - { resource: "@SerielCrossIndicatorBundle/Resources/config/services.yml" }  
+    - { resource: "@SerielChartbeatBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielDonReachBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielDandelionBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielLdaBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielRelatedwordBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielTrendBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielGoogleAnalyticsBundle/Resources/config/parameters.yml" }
+    - { resource: "@SerielCrossIndicatorBundle/Resources/config/parameters.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:
+        path: /_fragment
+        enabled: true
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ZombieBundle, SerielUserBundle, SerielAppliToolboxBundle, FOSUserBundle, SerielChartbeatBundle, SerielDonReachBundle, SerielDandelionBundle, SerielLdaBundle, SerielRelatedwordBundle, SerielTrendBundle, SerielGoogleAnalyticsBundle,SerielCrossIndicatorBundle ]
+    assets:
+      js_modules:
+         inputs:
+           - '@SerielChartbeatBundle/Resources/public/js/*.js'
+           - '@SerielDonReachBundle/Resources/public/js/*.js' 
+           - '@SerielDandelionBundle/Resources/public/js/*.js'
+           - '@SerielGoogleAnalyticsBundle/Resources/public/js/*.js'
+           - '@SerielRelatedwordBundle/Resources/public/js/*.js'
+      cs_modules:
+         inputs:
+           - '@SerielChartbeatBundle/Resources/public/css/*'
+           - '@SerielDonReachBundle/Resources/public/css/*' 
+           - '@SerielDandelionBundle/Resources/public/css/*'
+           - '@SerielGoogleAnalyticsBundle/Resources/public/css/*'
+           - '@SerielRelatedwordBundle/Resources/public/css/*'
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        dql:
+            string_functions:
+                field: DoctrineExtensions\Query\Mysql\Field
+                day: DoctrineExtensions\Query\Mysql\Day
+                month: DoctrineExtensions\Query\Mysql\Month
+                rand: DoctrineExtensions\Query\Mysql\Rand
+                weekday: DoctrineExtensions\Query\Mysql\WeekDay
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        mappings:
+                  ZombieBundle: ~
+                  SerielAppliToolboxBundle: ~
+                  SerielUserBundle: ~
+                  SerielChartbeatBundle: ~
+                  SerielDonReachBundle: ~
+                  SerielDandelionBundle: ~
+                  SerielLdaBundle: ~
+                  SerielRelatedwordBundle: ~
+                  SerielTrendBundle: ~
+                  SerielGoogleAnalyticsBundle: ~
+                  SerielCrossIndicatorBundle: ~ 
+        resolve_target_entities:
+            Seriel\AppliToolboxBundle\Model\SerielCredentialInterface: ZombieBundle\Entity\Securite\ZombieCredential
+            Seriel\AppliToolboxBundle\Model\SerielEntiteInterface: ZombieBundle\Entity\Entite\ZombieEntite
+            Seriel\AppliToolboxBundle\Model\SerielProfilInterface: ZombieBundle\Entity\Securite\ZombieProfil
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+# FOS
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Seriel\UserBundle\Entity\User
+    from_email:
+        address:        rbeaugrand@seriel.net
+        sender_name:    Romain Beaugrand

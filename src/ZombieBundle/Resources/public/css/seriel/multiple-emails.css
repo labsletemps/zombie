@@ -1,0 +1,93 @@
+.multiple_emails-container { 
+	padding:0; margin: 0; cursor:text; width:100%; 
+}
+
+.multiple_emails-container input { 
+	clear:both; 
+	width:100%; 
+	border:0; 
+	outline: none; 
+	margin-bottom:3px; 
+	padding-left: 5px; 
+	box-sizing: border-box;
+}
+
+.multiple_emails-container input{
+	border: 0 !important;
+}
+
+.multiple_emails-container input.multiple_emails-error {	
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px red !important; 
+	outline: thin auto red !important; 
+}
+
+.multiple_emails-container ul {
+	list-style-type:none; 
+	padding-left: 0; 
+}
+.multiple_emails-container ul > li {
+	vertical-align: middle;
+}
+
+.multiple_emails-email { 
+	position: relative;
+	background-color: #f0f0f0;
+	border-radius: 10px;
+	margin: 0px 6px 2px 0px;
+	padding: 1px 7px 2px 7px;
+	cursor: default;
+	color: #808080;
+	transition: color 0.3s;
+	padding-right: 23px;
+}
+.multiple_emails-email:hover {
+	box-shadow: 1px 1px 5px -2px #444;
+	color: black;
+}
+
+.multiple_emails-close { 
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 20px;
+	height: 20px;
+	background: url(../../images/charte/close_round_white.png) center center no-repeat;
+	background-size: 16px 16px;
+	cursor: pointer;
+}
+.multiple_emails-close > * {
+	display: none;
+}
+
+
+.multiple_emails-container ul {
+	margin: 0;
+}
+.multiple_emails-container ul > li {
+	display: inline-block;
+}
+
+.email_name.doublon {
+	color: red;
+}
+
+.length_test {
+	font-weight: normal;
+}
+li.inp {
+	padding-top: 1px;
+	margin-bottom: 1px;
+}
+li.inp > input {
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+li.inp:first-child > input,
+li.inp > input.force_visible,
+li.inp > input:focus {
+	height: auto;
+	padding-top: 1px;
+	padding-bottom: 2px;
+}

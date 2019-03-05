@@ -1,0 +1,13 @@
+<span class="nav_widget">googleAnalyticsArticleHistoNav</span>
+
+<div class="day_report_container">
+{{ liste(dayReports, null, 'Seriel\\GoogleAnalyticsBundle\\Entity\\GoogleAnalyticsDayReport', { 'static': true }) }}
+</div><div class="day_report_chart_container">
+<div class="chart_content">
+<svg width="100%" height="100%" shape-rendering="geometricPrecision"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg>
+<pre class="datas hidden">{{ graphPagesUniques|json_encode }}</pre>
+</div>
+</div>
+<div class="day_report_container">
+{{ liste(entranceReports, null, 'Seriel\\GoogleAnalyticsBundle\\Entity\\DayReportEntrance', { 'static': true }) }}
+</div>

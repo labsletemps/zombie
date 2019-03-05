@@ -1,0 +1,14 @@
+<div class="info_contact">
+    <div class="contact_block" contact_id={{ individuEntite.individu.id }}>
+        <span class="name bold">{{ individuEntite.individu.prenom ~" "~ individuEntite.individu.nom }}</span>{% if individuEntite.individu.contactPrincipal %}<span class="indic_contact float_right">Contact principal</span>{% endif %}<br/>
+        <br/>
+        <div class="block_left">
+            T&eacute;l : <span class="tel bold">{{ individuEntite.individu.telephone1 }} </span><br/>
+            Fax : <span class="fax bold">{{ individuEntite.individu.fax }} </span>
+        </div>
+        <div class="block_right">
+            E-mail : <span class="email bold">{{ individuEntite.individu.email }}</span><br/>
+            Poste : <span class="poste bold">{% if individuEntite.fonction is not empty %}{{ individuEntite.fonction.label }}{% endif %}</span>
+        </div>
+    </div>  
+</div>

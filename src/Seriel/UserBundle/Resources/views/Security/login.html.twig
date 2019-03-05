@@ -1,0 +1,119 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}<br/></div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    
+    <span class="logo"></span>
+    
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" /><br/>
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" /><br/>
+    
+    <input type="hidden" id="hash" name="_hash" />
+
+    <!-- <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label> --><br/>
+
+	<div class="inp_submit"><input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /><br/></div>
+	<div class="connexion_en_cours"><span class="loader"></span> &nbsp; Connexion en cours</div>
+    
+</form>
+    
+{% endblock fos_user_content %}
+
+{% block javascripts %}
+{{ parent() }}
+
+function loging() {
+	$('.inp_submit').css('visibility', 'hidden');
+	$('.connexion_en_cours').css('visibility', 'visible');
+	
+	toastr.clear();
+}
+
+$(document).ready(function() {
+	try {
+		console.log('test gotoLogin before');
+		gotoLogin();
+		console.log('test gotoLogin after');
+		return;
+	} catch (ex) {
+		console.log('test gotoLogin Exception '+ex);
+		// Do nothing
+	}
+	
+	$('form').bind('submit', loging);
+	
+	console.log('test gotoLogin continue');
+	
+	$('#hash').val(getCleanHash());
+	window.location.hash = '';
+
+	var usernameInp = $('#username');
+	/*if (usernameInp.val()) {
+		$('#password').focus();
+	} else {
+		usernameInp.focus();
+	}*/
+	usernameInp.focus().select();
+	
+	
+        
+        if($(".error").length > 0) {
+        	toastr.options = {
+	  		  "closeButton": false,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-bottom-center",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": "5000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			};
+        
+        
+          toastr['error']('Echec de la connexion');
+        
+          /*$(".error").addClass("error_bounced");
+          $( ".login input, .login label" ).hide();
+          $( ".login" ).animate({
+            opacity: 0.90,
+            left: "-=25",
+            top: "-=25",
+            width: "+=50",
+            height: "+=50",
+            backgroundColor: "#8A0808"
+          }, 2000, function() {
+            $(".error").hide("slow");
+          }).animate({
+            opacity: 1,
+            left: "+=25",
+            top: "+=25",
+            width: "-=50",
+            height: "-=50",
+            backgroundColor: "#2b85ba"
+          }, 1000, function() {
+            $( ".login input, .login label" ).show("slow");
+          });*/
+        }
+        
+        
+});
+{% endblock %}

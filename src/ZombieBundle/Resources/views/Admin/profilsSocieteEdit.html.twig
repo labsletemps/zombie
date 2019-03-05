@@ -1,0 +1,57 @@
+{% set uid = uid('profil_societe') %}
+
+<span class="nav_widget">edit_profil_societe</span>
+
+<div class="profils_infos">
+<span class="profil_id hidden">{{ profil.id }}</span>
+<div>
+<div class="title">Informations</div>
+<div class="cnt">
+{{ form(form) }}
+</div>
+</div>
+</div>
+
+<div class="profils_credentials generique">
+<div>
+<div class="title">Droits d'acc&egrave;s</div>
+<div class="cnt">
+
+<ul class="profils_credentials_ul">
+{% for group, creds in credentialsByGroup %}
+  <li>
+    <span class="title">{{ group }}</span>
+    <ul>
+{% include "ZombieBundle:Admin:creds_list.html.twig" %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>
+
+</div>
+</div>
+</div>
+
+<div class="profils_credentials entity">
+<div>
+<div class="title">Types de donn&eacute;es</div>
+<div class="cnt">
+
+<ul class="profils_credentials_ul">
+{% for entity, creds in credentialsByEntity %}
+  <li>
+    <span class="title">{{ entity_nice_name(entity) }}</span>
+    <ul>
+{% include "ZombieBundle:Admin:creds_list.html.twig" %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>
+
+</div>
+</div>
+</div>
+
+<div class="edit_profil_buttons">
+	<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer le profil</span></span>
+</div>

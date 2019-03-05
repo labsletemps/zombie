@@ -1,0 +1,39 @@
+
+.cul-list > li {
+  list-style-type: none !important;
+}
+ul[class*="mark"] {
+  margin-left: 0;
+  padding-left: 0;
+}
+ul[class*="mark"] > li {
+  margin-left: 23px;
+}
+
+[class*="mark"] .ordfix {
+  margin-left: 40px;
+}
+
+[class~="checkmark"] > li::before,
+li[class~="checkmark"]::before {
+  content: "\2713\20";
+}
+
+[class~="xmark"] > li::before,
+li[class~="xmark"]::before {
+  content: "\2717\20";
+}
+
+.list-red > li::before {
+  color: rgba(255,0,0,1);
+}
+.list-green > li::before {
+  color: rgba(0,127,0,1);
+}
+
+li.list-red::before {
+  color: rgba(255,0,0,1);
+}
+li.list-green::before {
+  color: rgba(0,128,0,1);
+}

@@ -1,0 +1,27 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+doctrine:
+    dbal:
+        host:     localhost
+        dbname:   zombietest
+        user:     zombie
+        password: zombie6440
+        charset:  UTF8
+        memory: true
+
+
+                
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true

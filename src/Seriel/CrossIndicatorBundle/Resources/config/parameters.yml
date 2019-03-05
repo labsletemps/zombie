@@ -1,0 +1,10 @@
+parameters:
+    zombie.modules.crossindicator:
+        service: seriel_cross_indicator.manager
+        metrics_object_class: Seriel\CrossIndicatorBundle\Entity\CrossIndicatorArticle
+        metrics_cross_object_class: Seriel\CrossIndicatorBundle\Entity\CrossIndicatorArticle
+        StateMetrics: seriel_cross_indicator.manager
+        references_manager_metrics:
+           - seriel_google_analytics.manager
+           - seriel_donreach.manager
+           - seriel_chartbeat.manager

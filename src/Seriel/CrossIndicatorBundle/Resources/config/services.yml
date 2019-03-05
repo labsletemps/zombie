@@ -1,0 +1,10 @@
+services:
+    seriel_cross_indicator.manager:
+        class: Seriel\CrossIndicatorBundle\Managers\CrossIndicatorManager
+        arguments: ["@service_container", "@logger","%crossindicator.calculindicator%"]
+    seriel_cross_indicator.article_metrics_manager:
+        class: Seriel\CrossIndicatorBundle\Managers\CrossIndicatorArticleManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_cross_indicator.param_indicator_manager:
+        class: Seriel\CrossIndicatorBundle\Managers\ParamIndicatorGenericManager
+        arguments: ["@doctrine", "@logger", "@service_container"]    

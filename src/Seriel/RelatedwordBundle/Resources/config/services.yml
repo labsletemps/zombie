@@ -1,0 +1,19 @@
+services:
+    seriel_related_word.manager:
+        class: Seriel\RelatedwordBundle\Managers\RelatedwordManager
+        arguments: ["@service_container", "@logger"]
+    seriel_related_word.dandelion_manager:
+        class: Seriel\RelatedwordBundle\Managers\RelatedwordDandelionManager
+        arguments: ["@service_container", "@logger"]
+    seriel_related_word.word_manager:
+        class: Seriel\RelatedwordBundle\Managers\RelatedwordWordManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_related_word.article_word_manager:
+        class: Seriel\RelatedwordBundle\Managers\RelatedwordArticleWordManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_related_word.link_word_manager:
+        class: Seriel\RelatedwordBundle\Managers\RelatedwordLinkWordManager
+        arguments: ["@doctrine", "@logger", "@service_container"]
+    seriel_related_word.article_link_word_manager:
+        class: Seriel\RelatedwordBundle\Managers\RelatedwordArticleLinkWordManager
+        arguments: ["@doctrine", "@logger", "@service_container"]

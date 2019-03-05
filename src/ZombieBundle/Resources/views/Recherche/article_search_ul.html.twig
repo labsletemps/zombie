@@ -1,0 +1,90 @@
+{% if uid is not defined %} {% set uid = uid('search') %} {% endif %}
+{% if full_open is not defined %}{% set full_open = false %} {% endif %}
+{% if show_special_values is not defined %}{% set show_special_values = false %} {% endif %}
+<ul>
+  <li>
+    <span class="widget search_consommable"{% if full_open %} full_open="1"{% endif %}>
+      <span class="button">Article</span>
+      <span class="content search_presta_compte">
+      	<span class="line inp"><label>Titre</label><span class="inp_container"><input type="text" name="titre" class="titre_inp def_focus" resume_pos="1" resume_name="titre" /></span></span>
+        <span class="line inp"><label>Chapeau</label><span class="inp_container"><input type="text" name="chapeau" class="chapeau_inp" resume_pos="2" resume_name="chapeau" /></span></span>
+        <span class="line inp"><label>Mot cl&eacute;</label><span class="inp_container"><input type="text" name="motcle" class="motcle_inp" resume_pos="3" resume_name="mot-clé" /></span></span>
+        <span class="line inp"><label>Section</label><span class="inp_container">{{ section_widget('section', null,{ 'resume_name': 'section', 'resume_pos': 4, 'multi': true }) }}</span></span>               
+      </span>
+      <span class="resume"></span>
+    </span>
+  </li>
+  <li>
+    <span class="widget"{% if full_open %} full_open="1"{% endif %}>
+      <span class="button">Dates</span>
+      <span class="content search_generic_elem_periode">
+        <span class="line inp attachable" attachable-name="Date de début"><label>Parution</label><span class="inp_container">{{ date_widget('date_parution', null, { 'resume_name': 'parut°', 'resume_pos': 1, 'widget_options': { 'tabs': 'day, week, month, year, periode, shortcuts', 'show_special_values' : show_special_values ? true: false } }) }}</span></span>
+      </span>
+      <span class="resume"></span>
+    </span>
+  </li>
+  <li>
+    <span class="widget search_consommable"{% if full_open %} full_open="1"{% endif %}>
+      <span class="button">Semantique</span>
+      <span class="content search_presta_compte">
+        {% set resumepos = 0 %}	
+        {% for module in searchSemantique %}
+        	<span class="line inp"><label>S&eacute;mantique {{ module  }}</label><span class="inp_container"><input type="text" name="semantique_{{ module  }}" class="semantique_{{ module  }}_inp" resume_pos="{{ loop.index  }}" resume_name="semantique_{{ module  }}" /></span></span>
+        	{% set resumepos = resumepos+1 %}
+        {% endfor %}
+        {% set resumepos = resumepos+1 %}
+        <span class="line inp"><label>Note Semantique</label><span class="inp_container">{{ min_max_widget('note_semantique', null,{ 'resume_name': 'note_semantique', 'resume_pos':  resumepos  }) }}</span></span>           
+   	  </span>
+      <span class="resume"></span>
+    </span>
+ </li> 
+  <li>
+    <span class="widget search_consommable"{% if full_open %} full_open="1"{% endif %}>
+      <span class="button">Trend</span>
+      <span class="content search_presta_compte">
+        {% set resumepos = 1 %}	
+        {% for module, service in serviceTrend %}
+        	{% for moduleSem in searchSemantique %}
+                <span class="line inp"><label>{{ module  }} {{ moduleSem }}</label><span class="inp_container">{{ trend_widget('trend_' ~ module ~ '_' ~ moduleSem,service, null,{ 'resume_name': 'trend_' ~ module ~ '_' ~ moduleSem , 'resume_pos': resumepos, 'multi': true }) }}</span></span>              
+                {% set resumepos = resumepos+1 %}   
+            {% endfor %}
+       {% endfor %}
+  	  </span>
+      <span class="resume"></span>
+    </span>
+ </li> 
+ {% for module, minmaxMetrics in moduleMetrics %}
+  <li>
+    <span class="widget search_consommable"{% if full_open %} full_open="1"{% endif %}>
+      <span class="button">Audience {{ module }}</span>
+      <span class="content search_presta_compte">
+        {% for IDminmaxMetrics, labelMetrics in minmaxMetrics %}
+            <span class="line inp">
+            <label>
+            	{% if logoModuleMetrics[module] is defined %}
+            		{% if logoModuleMetrics[module][IDminmaxMetrics] is defined %}
+                    	<span style="background-image: url({{ logoModuleMetrics[module][IDminmaxMetrics] }});background-position: left center; background-size: 15px 15px;padding-left:20px;background-repeat: no-repeat;"></span>
+                    {% endif %}
+                {% endif %}
+                {{ labelMetrics }}
+            </label>
+            <span class="inp_container">{{ min_max_widget(IDminmaxMetrics, null,{ 'resume_name': IDminmaxMetrics, 'resume_pos':  loop.index  }) }}</span></span>         
+        {% endfor %}
+   	  </span>
+      <span class="resume"></span>
+    </span>
+  </li>
+  {% endfor %}
+    <li>
+    <span class="widget search_consommable"{% if full_open %} full_open="1"{% endif %}>
+      <span class="button">Options</span>
+      <span class="content search_presta_compte">
+      	<span class="line inp"><label>Limit</label><span class="inp_container"><input type="number" name="limit" class="limit_inp def_focus" resume_pos="1" resume_name="limit" /></span></span>
+      	<span class="line inp"><label>Random</label><span class="inp_container"><input type="checkbox" name="random" class="random_inp def_focus" resume_pos="2" resume_name="random" /></span></span>
+        <span class="line inp"><label>Tri</label><span class="inp_container">{{ orderby_widget('orderby','ZombieBundle\\Entity\\News\\Article', null,{ 'resume_name': 'orderby', 'resume_pos': 3, 'multi': false }) }}</span></span>              
+		<span class="line inp"><label>Ordre decroissant</label><span class="inp_container"><input type="checkbox" name="desc" class="desc_inp def_focus" resume_pos="4" resume_name="desc" /></span></span>
+       </span>
+      <span class="resume"></span>
+    </span>
+  </li>
+</ul>

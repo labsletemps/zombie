@@ -1,0 +1,47 @@
+<span class="nav_widget">societeInfosNav</span>
+
+<div class="compte_info_content">
+    <div class="actions ui-layout-north">
+        <ul>
+            <li shortcut="Alt+E">
+                <span>Soci&eacute;t&eacute;</span>
+            </li>
+        </ul>
+    </div>
+    <div class="compte_info_content_2 ui-layout-center">
+        <div class="left_helper ui-layout-west">
+            <div class="ancre" ancre="informations"><span>Informations</span></div>
+  	   </div>
+        <div class="compte_info_content_3 scrollable ui-layout-center">
+
+            <div class="block_ancre block_ancre_informations" ancre_block="informations">
+                <div class="di_informations">
+                    <span class="societe_id hidden">{{ societe.id }}</span>
+                    <div class="compte_info_informations_infos_1 can_copy">
+                        <div class="title" >Informations</div>
+                        Soci&eacute;t&eacute; : <span class="nom"><span class="current">{{ societe.nom }}</span></span><br/><br/>
+                        <br/>
+                        D&eacute;partement : <span class="departement">{{ societe.departement }}</span><br/>
+                        R&eacute;gion : <span class="region">{{ societe.region }}</span><br/>
+                        Pays :  <span class="pays">{{ societe.pays }}</span><br/>
+                    </div>
+                    <div class="compte_info_informations_infos_2 can_copy" >
+                        <span class="bold info_name">{{ societe.nom }}</span>
+                        <div class="client_block">
+                            <div class="block_right">
+                                {%if societe.addr1!="" %}{{ societe.addr1 }}<br/>{%endif%}
+                                {%if societe.addr2!="" %}{{ societe.addr2 }}<br/>{%endif%}
+                                {%if societe.addr3!="" %}{{ societe.addr3 }}<br/>{%endif%}
+                                {{ societe.cp }} {{ societe.ville }}<br/><br/>
+                                <span>{{societe.telephone1|tel}}</span><br/>
+                                {%if societe.telephone2!="" %}<span>{{societe.telephone2|tel}}</span><br/>{% endif %}
+                                <span>{{societe.fax|tel}}</span><br/><br/>
+                                <span>{{societe.email}}</span><br/>
+                            </div>
+                            
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>	

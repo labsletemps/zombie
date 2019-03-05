@@ -1,0 +1,13 @@
+<span class="nav_widget">articleSemantiqueNav</span>
+
+<div class="article_semantique_container" article_id="{{ article_id }}">
+<div class="tabs ui-layout-north">
+
+{% for module in module_semantics %}
+ 	<span hash="article[{{ article_id }}]/semantique/{{ module }}">{{ module |capitalize }}</span>
+{% endfor %}
+</div>
+<div class="contents ui-layout-center">
+
+</div>
+</div>

@@ -1,0 +1,39 @@
+<span class="nav_widget">relatedwordArticleSemantiqueNav</span>
+<div class="dandelion_semantics_container">
+   <div class="title_semantic" >Articles similaires :</div><br/>
+   <div class="article_similarity_container">
+        {{ liste(articlesSimilarity, null, 'ZombieBundle\\Entity\\News\\Article', { 'static': true, 'columns': 'titre,section,chapeau'  }) }}
+    </div>
+   <div class="title_semantic" >Mots clés :</div><br/>
+    <table class="designed2 title">
+      <thead>
+        <tr>
+          <td>Mot clé</td>
+        </tr>
+      </thead>
+      <tbody>
+      {% for word in wordsearch %}
+        <tr>
+          <th>{{ word }}</th>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="title_semantic" >Related words :</div><br/>
+    <table class="designed2 title">
+      <thead>
+        <tr>
+          <td>Related word</td>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for word, weight in relatedWords %}
+        <tr>
+          <th>{{ word }}</th>
+          <td>{{ weight }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>

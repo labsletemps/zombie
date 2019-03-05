@@ -1,0 +1,45 @@
+<span class="nav_widget">shareSearch</span>
+
+<div class="div_list share_search">
+	<span class="rs_id hidden">{{ rs.id }}</span>
+    <div class="sortable_list list_from">
+        <div class="title">
+        <form action="javascript:return" class="search_form">
+        <table cellspacing="0" cellpadding="1">
+          <tbody>
+            <tr>
+              <td>&nbsp;Individu</td>
+            </tr>
+            <tr>
+              <td><span class="cli_select hidden">{{ select_compte_widget('compte_id', null, { 'multi': 0, 'thin': 1 }) }}</span></td>
+              <td>&nbsp;<input type="text" class="nom" /></td>
+              <td>&nbsp;<input type="submit" value=" " /></td>
+            </tr>
+          </tbody>
+        </table>
+        </form>
+        </div>
+        <div class="cnt scrollable">
+		  <ul>
+		  </ul>
+        </div>
+    </div>
+    <div class="sortable_list list_to">
+        <div class="title">Individus sélectionnés</div>
+        <div class="cnt scrollable" style="top: 36px;">
+		  <ul class="ui-sortable">
+		  {% for entite_id,entite in entitesMap %}
+		  {% if individusByEntite[entite_id] is defined and individusByEntite[entite_id] is not null %}
+		  <li class="group" entite_id="{{ entite_id }}"><span>{{ entite.nom }}</span></li>
+		  {% for individu in individusByEntite[entite_id] %}
+		  <li individu_id="{{ individu.id }}" entite_id="{{ entite_id }}" entite_name="{{ entite.nom }}"><span><span class="head_title" code="{{ individu.id }}" sort_type="text" title="{{ individu.nomComplet }}">{{ individu.nomComplet }}</span><span class="remove">Supprimer</span></span></li>
+		  {% endfor %}
+		  {% endif %}
+		  {% endfor %}
+		  </ul>
+        </div>
+    </div>
+    <div class="adm_list_buttons">
+	<span class="cancel_button"><span>Annuler</span></span><span class="valid_button"><span>Enregistrer<span></span>
+	</span></span></div>
+</div>

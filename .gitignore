@@ -16,3 +16,7 @@
 /web/bundles/
 /.svn
 /client_secret_googleanalytics.json
+web/documents/exports/*
+web/assetic
+web/css
+web/js
